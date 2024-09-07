@@ -1,4 +1,4 @@
-package 완전탐색.풀어야할문제.스타트와링크_14889_실버1;
+package 완전탐색.완료된문제.스타트와링크_14889_실버1;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -38,12 +38,10 @@ public class Soo {
         }
         // 팀 나누기 (백트래킹 시작)
         divideTeam(0, 0);
-
         return minDiff;
     }
 
     private void divideTeam(int idx, int count) {
-        // 모든 사람을 탐색한 경우
         if (count == N / 2) {
             calculateDifference();
             return;
@@ -54,6 +52,8 @@ public class Soo {
             if (!visited[i]) {
                 visited[i] = true;
                 divideTeam(i + 1, count + 1);
+
+
                 visited[i] = false;
             }
         }
