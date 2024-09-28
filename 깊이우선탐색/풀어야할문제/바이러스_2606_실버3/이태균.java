@@ -31,7 +31,7 @@ public class 이태균 {
             int id = Integer.parseInt(st.nextToken());
             int linked_id = Integer.parseInt(st.nextToken());
 
-            // 양방향 연결
+            // 양방향 연결 *** 문제 요구사항에 의해 필요한듯함..?
             computerList.get(id).linkedComputerIdList.add(linked_id);
             computerList.get(linked_id).linkedComputerIdList.add(id);
         }
