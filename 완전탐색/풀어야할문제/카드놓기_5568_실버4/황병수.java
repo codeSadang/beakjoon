@@ -3,10 +3,9 @@ package 완전탐색.풀어야할문제.카드놓기_5568_실버4;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
-import java.util.ArrayList;
 import java.util.HashSet;
 
-public class Soo {
+public class 황병수 {
 
     static int N;
     static int K;

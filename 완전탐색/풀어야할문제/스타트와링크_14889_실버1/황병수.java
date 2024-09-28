@@ -1,4 +1,4 @@
-package 완전탐색.완료된문제.스타트와링크_14889_실버1;
+package 완전탐색.풀어야할문제.스타트와링크_14889_실버1;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -8,7 +8,7 @@ import java.io.InputStreamReader;
  * 완전탐색 문제
  * 백트래킹 사용
  */
-public class Soo {
+public class 황병수 {
 
     static int N;
     static int[][] S;
@@ -17,8 +17,8 @@ public class Soo {
 
     public static void main(String[] args) throws IOException {
 
-        Soo soo = new Soo();
-        int solution = soo.solution();
+        황병수 황병수 = new 황병수();
+        int solution = 황병수.solution();
         System.out.println("solution = " + solution);
     }
 
