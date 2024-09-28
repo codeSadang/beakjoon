@@ -35,11 +35,9 @@ public class 황병수 {
                 int y = Integer.parseInt(st.nextToken());
                 farm[y][x] = 1;
             }
-
             int count = 0; // 보호받는 배추 그룹 수
 
             // 모든 좌표 검색
-
             for (int i = 0; i < N; i++) {
                 for (int j = 0; j < M; j++) {
                     if(farm[i][j] == 1 && !visited[i][j]) {
@@ -48,10 +46,8 @@ public class 황병수 {
                     }
                 }
             }
-
             sb.append(count).append('\n');
         }
-
         System.out.println(sb);
     }
 
