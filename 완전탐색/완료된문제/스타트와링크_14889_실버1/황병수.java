@@ -8,7 +8,7 @@ import java.io.InputStreamReader;
  * 완전탐색 문제
  * 백트래킹 사용
  */
-public class Soo {
+public class 황병수 {
 
     static int N;
     static int[][] S;
@@ -16,13 +16,11 @@ public class Soo {
     static int minDiff = Integer.MAX_VALUE;
 
     public static void main(String[] args) throws IOException {
-
-        Soo soo = new Soo();
-        int solution = soo.solution();
+        int solution = solution();
         System.out.println("solution = " + solution);
     }
 
-    private int solution() throws IOException {
+    private static int solution() throws IOException {
 
         BufferedReader bf = new BufferedReader(new InputStreamReader(System.in));
         N = Integer.parseInt(bf.readLine());
@@ -41,7 +39,7 @@ public class Soo {
         return minDiff;
     }
 
-    private void divideTeam(int idx, int count) {
+    private static void divideTeam(int idx, int count) {
         if (count == N / 2) {
             calculateDifference();
             return;
@@ -59,7 +57,7 @@ public class Soo {
         }
     }
 
-    private void calculateDifference() {
+    private static void calculateDifference() {
         int teamA = 0, teamB = 0;
 
         // 팀 능력치 계산
