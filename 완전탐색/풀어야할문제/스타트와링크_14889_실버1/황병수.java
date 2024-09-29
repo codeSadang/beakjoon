@@ -1,4 +1,4 @@
-package 완전탐색.완료된문제.스타트와링크_14889_실버1;
+package 완전탐색.풀어야할문제.스타트와링크_14889_실버1;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -16,11 +16,13 @@ public class 황병수 {
     static int minDiff = Integer.MAX_VALUE;
 
     public static void main(String[] args) throws IOException {
-        int solution = solution();
+
+        황병수 황병수 = new 황병수();
+        int solution = 황병수.solution();
         System.out.println("solution = " + solution);
     }
 
-    private static int solution() throws IOException {
+    private int solution() throws IOException {
 
         BufferedReader bf = new BufferedReader(new InputStreamReader(System.in));
         N = Integer.parseInt(bf.readLine());
@@ -39,7 +41,7 @@ public class 황병수 {
         return minDiff;
     }
 
-    private static void divideTeam(int idx, int count) {
+    private void divideTeam(int idx, int count) {
         if (count == N / 2) {
             calculateDifference();
             return;
@@ -57,7 +59,7 @@ public class 황병수 {
         }
     }
 
-    private static void calculateDifference() {
+    private void calculateDifference() {
         int teamA = 0, teamB = 0;
 
         // 팀 능력치 계산
