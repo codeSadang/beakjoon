@@ -9,7 +9,7 @@ import java.util.StringTokenizer;
 
 public class 황병수 {
 
-    static List<Integer>[] graph;  // 그래프 구조
+    static List<List<Integer>> graph;  // 그래프 구조 (인접 리스트)
     static boolean[] visited;       // 방문 여부
 
     public static void main(String[] args) throws IOException {
@@ -19,10 +19,11 @@ public class 황병수 {
         int m = Integer.parseInt(st.nextToken()); // 간선의 개수
 
         // 그래프 초기화
-        graph = new ArrayList[n + 1];
+        graph = new ArrayList<>();
         visited = new boolean[n + 1];
+
         for (int i = 1; i <= n; i++) {
-            graph[i] = new ArrayList<>();
+            graph.add(new ArrayList<>());
         }
 
         // 간선 입력 받기
@@ -30,8 +31,8 @@ public class 황병수 {
             st = new StringTokenizer(br.readLine());
             int u = Integer.parseInt(st.nextToken());
             int v = Integer.parseInt(st.nextToken());
-            graph[u].add(v);
-            graph[v].add(u); // 방향 없는 그래프
+            graph.get(u).add(v);
+            graph.get(v).add(u); // 방향 없는 그래프
         }
 
         int componentCount = 0; // 연결 요소 개수
@@ -52,7 +53,7 @@ public class 황병수 {
     static void dfs(int current) {
         visited[current] = true; // 현재 노드 방문 처리
 
-        for (Integer neighbor : graph[current]) {
+        for (Integer neighbor : graph.get(current)) {
             if (!visited[neighbor]) { // 방문하지 않은 노드라면
                 dfs(neighbor); // 재귀 호출
             }

@@ -6,16 +6,6 @@ import java.io.InputStreamReader;
 import java.util.Arrays;
 import java.util.StringTokenizer;
 
-/**
- * 정사각형으로 이루어져 있는 섬과 바다 지도가 주어지고,
- * 섬의 개수를 세는 프로그램 작성
- * 가로 세로 대각선으로 연결되어 있으면 하나의 섬!!
- * 지도 밖으로는 나갈 수 없음
- * 처음 주어지는 값은 너비와 높이 (50보다 작거나 같은 정수)
- * 2번쨰 줄부터 h개 줄에는 지도가 주어지고
- * 1은 땅 0은 바다
- * 마지막에는 0이 2개 주어짐
- */
 public class 황병수 {
 
     static int width;
@@ -29,7 +19,6 @@ public class 황병수 {
 
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
         StringBuilder sb = new StringBuilder();
-
 
         while (true) {
             StringTokenizer st = new StringTokenizer(br.readLine());
