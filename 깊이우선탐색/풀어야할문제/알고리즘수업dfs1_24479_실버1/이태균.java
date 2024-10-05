@@ -3,18 +3,37 @@ package 깊이우선탐색.풀어야할문제.알고리즘수업dfs1_24479_실�
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
-import java.util.*;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
+import java.util.StringTokenizer;
 
+/**
+ * 오늘도 서준이는 깊이 우선 탐색(DFS) 수업 조교를 하고 있다.
+ * 아빠가 수업한 내용을 학생들이 잘 이해했는지 문제를 통해서 확인해보자.
+ * N개의 정점과 M개의 간선으로 구성된 무방향 그래프(undirected graph)가 주어진다.
+ * 정점 번호는 1번부터 N번이고 모든 간선의 가중치는 1이다.
+ * 정점 R에서 시작하여 깊이 우선 탐색으로 노드를 방문할 경우 노드의 방문 순서를 출력하자.
+ * <p>
+ * 깊이 우선 탐색 의사 코드는 다음과 같다.
+ * 인접 정점은 오름차순으로 방문한다.
+ * <p>
+ * dfs(V, E, R) {  # V : 정점 집합, E : 간선 집합, R : 시작 정점
+ * visited[R] <- YES;  # 시작 정점 R을 방문 했다고 표시한다.
+ * for each x ∈ E(R)  # E(R) : 정점 R의 인접 정점 집합.(정점 번호를 오름차순으로 방문한다)
+ * if (visited[x] = NO) then dfs(V, E, x);
+ * }
+ */
 public class 이태균 {
 
     public static int N;
     public static int M;
     public static int R;
-    public static HashMap<Integer, Integer> VISIT_ORDER = new HashMap<>();
+
+    // 그래프 구조(인접 리스트)
     public static List<List<Integer>> GRAPH;
     public static boolean[] VISITED;
 
-    public static int count = 1;
     public static StringBuilder SB = new StringBuilder();
 
     public static void main(String[] args) throws IOException {
@@ -29,7 +48,6 @@ public class 이태균 {
         GRAPH = new ArrayList<>();
         for (int i = 0; i <= N; i++) {
             GRAPH.add(new ArrayList<>());
-            VISIT_ORDER.put(i,0);
         }
         VISITED = new boolean[N + 1];
 
@@ -43,25 +61,17 @@ public class 이태균 {
             GRAPH.get(v).add(u);
         }
 
-        for (int i = 0; i <= N; i++) {
+        int size = GRAPH.size();
+        for (int i = 0; i < size; i++) {
             Collections.sort(GRAPH.get(i));
         }
 
         dfs(R);
-
-        for (int i = 1; i <= N; i++) {
-            SB.append(VISIT_ORDER.get(i));
-            if (i != N) {
-                SB.append("\n");  // 마지막 요소가 아닌 경우에만 줄바꿈 추가
-            }
-        }
-
-        System.out.println(SB);
+        System.out.print(SB);
     }
 
     private static void dfs(int R) {
         VISITED[R] = true;
-        VISIT_ORDER.put(R, count++);
 
         for (int neighbor : GRAPH.get(R)) {
             if (!VISITED[neighbor]) {
@@ -69,4 +79,5 @@ public class 이태균 {
             }
         }
     }
+
 }
