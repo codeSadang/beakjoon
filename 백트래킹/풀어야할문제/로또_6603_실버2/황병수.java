@@ -1,11 +1,11 @@
-package 백트래킹.풀어야할문제;
+package 백트래킹.풀어야할문제.로또_6603_실버2;
 
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.util.StringTokenizer;
 
-public class 로또_6603_실버2 {
+public class 황병수 {
 
     static int[] S;
     static int size;
