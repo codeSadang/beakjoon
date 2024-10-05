@@ -6,74 +6,62 @@ import java.io.InputStreamReader;
 import java.util.HashMap;
 import java.util.StringTokenizer;
 
+
+/**
+ * DFS, 백트래킹
+ */
 public class 황병수 {
 
-    static String[][] map;
-    static boolean[][] visited;
-    static int C;
-    static int R;
+    static int[][] map;
+    static boolean[] visit = new boolean[26];
+    static int C, R;
     static int[] dx = {-1, 0, 1, 0};
     static int[] dy = {0, 1, 0, -1};
-    static HashMap<String, Integer> alphabetMap;
     static int maxCnt = Integer.MIN_VALUE;
-    static int nowCnt = 0;
     public static void main(String[] args) throws IOException {
 
-        BufferedReader bf = new BufferedReader(new InputStreamReader(System.in));
+        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
 
-        StringTokenizer st = new StringTokenizer(bf.readLine());
+        StringTokenizer st = new StringTokenizer(br.readLine());
         R = Integer.parseInt(st.nextToken());
         C = Integer.parseInt(st.nextToken());
 
         // 초기화
-        map = new String[R][C];
-        visited = new boolean[R][C];
-        alphabetMap = new HashMap<>();
+        map = new int[R][C];
 
         // 값 할당
         for (int i = 0; i < R; i++) {
-            map[i] = bf.readLine().split("");
+            String str = br.readLine();
+            for (int j = 0; j < C; j++) {
+                map[i][j] = str.charAt(j) - 'A';
+            }
         }
 
         // 조회
-        for (int i = 0; i < R; i++) {
-            for (int j = 0; j < C; j++) {
-                visited = new boolean[R][C];
-                alphabetMap = new HashMap<>();
-                nowCnt = 0;
-                dfs(i, j, 1);
-                maxCnt = Math.max(nowCnt, maxCnt);
-            }
-        }
+        dfs(0, 0, 0);
+
+        // 출력
         System.out.println(maxCnt);
     }
 
-    static void dfs(int y, int x, int cnt) {
-        // 최대 카운트 업데이트
-        maxCnt = Math.max(maxCnt, cnt);
-        visited[y][x] = true;
+    public static void dfs(int x, int y, int count) {
+        if (visit[map[x][y]]) { // 0,0에 저장된 알파벳이 이미 한번 방문한 알파벳이라면,
+            count++;
+            maxCnt = Math.max(maxCnt, count); // 정답을 갱신해준다.
 
+        } else {
+            visit[map[x][y]] = true;
+            for (int i = 0; i < 4; i++) {
+                int cx = x + dx[i];
+                int cy = y + dy[i];
 
-        for (int i = 0; i < 4; i++) {
-            int ny = y + dy[i];
-            int nx = x + dx[i];
-
-            if(nx >= 0 && ny >= 0 &&  nx < C && ny < R) {
-                if (!visited[ny][nx] && processColor(map[ny][nx])) {
-                    dfs(ny, nx, cnt + 1);
+                if (cx >= 0 && cy >= 0 && cx < R && cy < C) {
+                    dfs(cx, cy, count);
                 }
             }
-        }
-    }
 
-    static boolean processColor(String color) {
-        int count = alphabetMap.getOrDefault(color, 0);
+            visit[map[x][y]] = false;
 
-        if (count == 0) {
-            alphabetMap.put(color, 1);
-            return true;
-        } else {
-            return false;
         }
     }
 }
