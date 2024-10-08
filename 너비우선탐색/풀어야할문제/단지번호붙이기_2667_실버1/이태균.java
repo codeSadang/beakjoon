@@ -55,8 +55,8 @@ public class 이태균 {
         System.out.println(size);
     }
 
-    private static void bfs(int x, int y) {
-        Queue<int[]> q = new ArrayDeque<>();
+    private static void bfs(int y, int x) {
+        ArrayDeque<int[]> q = new ArrayDeque<>();
         // 큐에 시작점을 저장
         q.add(new int[]{y, x});
         // 시작점 방문 처리
@@ -91,6 +91,7 @@ public class 이태균 {
             }
         }
 
+        System.out.println("home_cnt = " + home_cnt);
         LOCAL.add(home_cnt);
     }
 

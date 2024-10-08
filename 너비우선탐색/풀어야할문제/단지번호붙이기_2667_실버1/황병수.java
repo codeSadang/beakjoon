@@ -5,7 +5,7 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 import java.util.ArrayDeque;
 import java.util.ArrayList;
-import java.util.Arrays;
+import java.util.Collections;
 
 public class 황병수 {
 
@@ -29,22 +29,24 @@ public class 황병수 {
             }
         }
 
-        int totalCnt = 0;
-        StringBuilder sb = new StringBuilder();
+        ArrayList<Integer> houseCounts = new ArrayList<>();
 
         for (int i = 0; i < size; i++) {
             for (int j = 0; j < size; j++) {
                 if(!visited[i][j] && map[i][j] == 1) {
-                    int bfs = bfs(i, j);
-                    System.out.println("bfs = " + bfs);
-                    sb.append(bfs).append('\n');
-                    totalCnt++;
+                    int houseCount = bfs(i, j);
+                    houseCounts.add(houseCount);
                 }
             }
         }
+        // 단지 내 집의 수 오름차순 정렬
+        Collections.sort(houseCounts);
 
-        System.out.println(totalCnt);
-        System.out.println(sb);
+        // 총 단지 수 출력
+        System.out.println(houseCounts.size());
+        for (int count : houseCounts) {
+            System.out.println(count);
+        }
     }
 
 
@@ -59,7 +61,7 @@ public class 황병수 {
             int[] current = queue.poll();
             int currY = current[0];
             int currX = current[1];
-//            count++;
+            count++;
 
             for (int i = 0; i < 4; i++) {
                 int ny = currY + dy[i];
@@ -69,7 +71,7 @@ public class 황병수 {
                     if(!visited[ny][nx] && map[ny][nx] == 1) {
                         queue.add(new int[]{ny, nx});
                         visited[ny][nx] = true;
-                        count++;
+
                     }
                 }
             }
