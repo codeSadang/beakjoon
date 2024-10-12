@@ -5,7 +5,6 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 
 public class 황병수 {
-
     static int N;
     static int[][] queen;
     static int result = 0;
@@ -20,25 +19,53 @@ public class 황병수 {
         visited = new boolean[N][N];
 
         dfs(0,0, 0);
-
+        System.out.println("result = " + result);
     }
 
     static void dfs(int y, int x, int cardCnt) {
+
         if (cardCnt == N) {
             result++;
             return;
         }
 
-        visited[y][x] = true;
         for (int i = 0; i < 4; i++) {
             int nx = x + dx[i];
             int ny = y + dy[i];
 
             if (nx >= 0 && ny >= 0 && nx < N && ny < N) {
-               visited[ny][nx] = true;
+                if(!visited[ny][nx]) {
+                    visited[ny][nx] = true;
+                    checkPosition(ny,nx);
+                    
+                    dfs(ny,nx,cardCnt + 1);
+                    
+                    visited[ny][nx] = false;
+                    unCheckPosition(ny,nx);
+                }
             }
         }
 
 
+    }
+
+    static void checkPosition(int y, int x) {
+        for (int i = 0; i < N; i++) {
+            for (int j = 0; j < N; j++) {
+                if (y-x == i-j || i == y || j == x) {
+                    visited[i][j] = true;
+                }
+            }
+        }
+    }
+
+    static void unCheckPosition(int y, int x) {
+        for (int i = 0; i < N; i++) {
+            for (int j = 0; j < N; j++) {
+                if (y-x == i-j || i == y || j == x) {
+                    visited[i][j] = false;
+                }
+            }
+        }
     }
 }
