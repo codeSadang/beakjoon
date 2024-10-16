@@ -35,9 +35,8 @@ public class 황병수 {
            return;
        }
 
-        for (int i = 0; i < N; i++) {
+        for (int i = 1; i < N; i++) {
             if (!visited[i] ) {
-
                 if (depth > 0) {
                     if (arr[depth-1] < (i + 1)) {
                         visited[i] = true;
