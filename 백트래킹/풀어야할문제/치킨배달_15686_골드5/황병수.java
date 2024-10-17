@@ -7,7 +7,6 @@ import java.io.InputStreamReader;
 import java.util.*;
 
 public class 황병수 {
-
     static int N,M;
     static int minDistance = Integer.MAX_VALUE;
     static int[][] map;

@@ -49,7 +49,6 @@ public class 황병수 {
         }
     }
 
-
     static int bfs(int y, int x) {
         ArrayDeque<int[]> queue = new ArrayDeque<>();
         queue.add(new int[]{y,x});
