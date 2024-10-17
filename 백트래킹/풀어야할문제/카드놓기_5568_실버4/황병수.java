@@ -13,27 +13,19 @@ public class 황병수 {
     static int[] CL;
     static boolean[] VISITED;
     public static Set<String> RL = new HashSet<>();
-
     public static void main(String[] args) throws IOException {
-        solution();
-    }
-
-    private static int solution() throws IOException {
-
         BufferedReader bf = new BufferedReader(new InputStreamReader(System.in));
         N = Integer.parseInt(bf.readLine());
         K = Integer.parseInt(bf.readLine());
 
-        int[] cardList = new int[N];
-        boolean[] visited = new boolean[N];
+        CL = new int[N];
+        VISITED = new boolean[N];
 
         for (int i = 0; i < N; i++) {
-            cardList[i] = Integer.parseInt(bf.readLine());
+            CL[i] = Integer.parseInt(bf.readLine());
         }
 
         backtracking(new StringBuilder(),0);
-
-        return RL.size();
     }
 
     private static void backtracking(StringBuilder sb, int depth) {
