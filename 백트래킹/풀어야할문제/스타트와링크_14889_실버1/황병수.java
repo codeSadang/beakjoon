@@ -65,9 +65,6 @@ public class 황병수 {
 
     static void compareScore(List<Integer> ATeam, List<Integer> BTeam ) {
 
-//        System.out.println("ATeam = " + ATeam);
-//        System.out.println("BTeam = " + BTeam);
-
         int ATeamScore = 0;
         int BTeamScore = 0;
 
