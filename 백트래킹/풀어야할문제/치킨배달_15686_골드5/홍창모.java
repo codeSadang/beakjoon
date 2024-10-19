@@ -15,6 +15,7 @@ class Point {
     }
 }
 
+
 public class 홍창모 {
 
     static int N, M, len, answer = Integer.MAX_VALUE;
