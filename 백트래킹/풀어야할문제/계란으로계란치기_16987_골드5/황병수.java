@@ -9,7 +9,7 @@ import java.util.List;
 import java.util.StringTokenizer;
 
 
-public class Main {
+public class 황병수 {
 
     static int N;
     static List<int[]> eggs;

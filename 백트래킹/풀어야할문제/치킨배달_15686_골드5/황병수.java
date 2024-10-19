@@ -35,6 +35,7 @@ public class 황병수 {
     }
 
     private static void chooseChickens(int idx, int depth, List<int[]> selectedChickens) {
+
         if (depth == M) {
             minDistance = Math.min(minDistance, calculateDistance(selectedChickens));
             return;
