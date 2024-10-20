@@ -7,13 +7,7 @@ import java.io.InputStreamReader;
 import java.util.ArrayList;
 import java.util.StringTokenizer;
 
-class Point {
-    public int x, y;
-    Point(int x, int y) {
-        this.x = x;
-        this.y = y;
-    }
-}
+
 
 
 public class 홍창모 {
@@ -87,5 +81,11 @@ public class 홍창모 {
             }
         }
     }
-
+    static class Point {
+        public int x, y;
+        Point(int x, int y) {
+            this.x = x;
+            this.y = y;
+        }
+    }
 }

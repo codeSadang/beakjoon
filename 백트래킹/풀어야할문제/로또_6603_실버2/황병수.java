@@ -5,45 +5,53 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 import java.util.StringTokenizer;
 
+/**
+ * 1 ~49 에서 6개 숫자를 고른다.
+ *
+ * 49수중 6개 이상의 수를 골라서 집합 s를 만든다음 그 수만 가지고서 번호를 선택
+ */
 public class 황병수 {
 
-    static int[] S;
-    static int size;
-    static StringBuilder sb = new StringBuilder();
-
+    static boolean[] visited;
+    static int K;
+    static int[] listA;
+    static StringBuilder result = new StringBuilder();
     public static void main(String[] args) throws IOException {
+
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+
 
         while (true) {
             StringTokenizer st = new StringTokenizer(br.readLine());
-            size = Integer.parseInt(st.nextToken());
+            K = Integer.parseInt(st.nextToken());
 
-            if (size == 0) break; // 종료 조건
+            if (K == 0) break;
 
-            S = new int[size];
-            for (int i = 0; i < size; i++) {
-                S[i] = Integer.parseInt(st.nextToken());
+            visited = new boolean[K];
+            listA = new int[K];
+            for (int i = 0; i < K; i++) {
+                listA[i] = Integer.parseInt(st.nextToken());
             }
 
-            dfs(0, 0, new int[6]); // 선택한 6개의 수 저장용 배열 전달
-            sb.append('\n'); // 각 케이스마다 결과 구분
+            backtracking(0,0, "");
+            result.append("\n");
         }
-
-        System.out.println(sb);
+        System.out.println(result);
     }
 
-    static void dfs(int startP, int count, int[] selected) {
+    private static void backtracking(int count, int beforeIndex, String tempResult) {
+
         if (count == 6) {
-            for (int num : selected) {
-                sb.append(num).append(' ');
-            }
-            sb.append('\n');
+            result.append(tempResult).append("\n");
             return;
         }
 
-        for (int i = startP; i < size; i++) {
-            selected[count] = S[i]; // 선택한 수를 저장
-            dfs(i + 1, count + 1, selected); // 재귀 호출
+        for (int i = beforeIndex; i < K; i++) {
+            if (!visited[i]) {
+                visited[i] = true;
+                backtracking(count + 1, i,tempResult + listA[i] + " ");
+                visited[i] = false;
+            }
         }
     }
 }
