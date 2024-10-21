@@ -15,6 +15,8 @@ public class 이태균 {
     public static int[][] FARM;
     public static boolean[][] VISITED;
 
+    public static int COUNT = 0;
+
     public static int[] DX = {-1, 0, 1, 0};
     public static int[] DY = {0, -1, 0, 1};
 
@@ -34,16 +36,16 @@ public class 이태균 {
             K = Integer.parseInt(st.nextToken());
             for (int j = 0; j < K; j++) {
                 st = new StringTokenizer(br.readLine());
-                int x = Integer.parseInt(st.nextToken());
-                int y = Integer.parseInt(st.nextToken());
-                FARM[x][y] = 1;
+                int row = Integer.parseInt(st.nextToken());
+                int col = Integer.parseInt(st.nextToken());
+                FARM[row][col] = 1;
             }
 
             int count = 0;
-            for (int y = 0; y < M; y++) {
-                for (int x = 0; x < N; x++) {
-                    if (FARM[y][x] == 1 && !VISITED[y][x]) {
-                        dfs(y, x);
+            for (int row = 0; row < M; row++) {
+                for (int col = 0; col < N; col++) {
+                    if (FARM[row][col] == 1 && !VISITED[row][col]) {
+                        dfs(row, col);
                         count++;
                     }
                 }
@@ -53,20 +55,20 @@ public class 이태균 {
         }
     }
 
-    private static void dfs(int y, int x) {
+    private static void dfs(int now_row, int now_col) {
         // 현재 배추 방문
-        VISITED[y][x] = true;
+        VISITED[now_row][now_col] = true;
 
         // 상하좌우로 배추를 탐색
         for (int i = 0; i < 4; i++) {
-            int c_y = y + DY[i];
-            int c_x = x + DX[i];
+            int next_col = now_col + DX[i];
+            int next_row = now_row + DY[i];
 
             // 1. 배추밭에서만 확인 2. 방문하지 않은 곳
-            if (c_y >= 0 && c_y < M && c_x >= 0 && c_x < N) {
-                if (FARM[c_y][c_x] == 1 && !VISITED[c_y][c_x]) {
+            if (next_row >= 0 && next_row < M && next_col >= 0 && next_col < N) {
+                if (FARM[next_row][next_col] == 1 && !VISITED[next_row][next_col]) {
                     // 상하좌우로 방문한 배추로 이동해서 탐색
-                    dfs(c_y, c_x);
+                    dfs(next_row, next_col);
                 }
             }
         }
