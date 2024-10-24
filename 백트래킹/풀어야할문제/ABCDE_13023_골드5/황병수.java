@@ -55,14 +55,10 @@ public class 황병수 {
             return;
         }
 
-
         for (int now : relations.get(idx)) {
-
             if (!visited[now]) {
                 visited[now] = true;
                 dfs(now, depth + 1);
-
-
                 visited[now] = false;
             }
         }
