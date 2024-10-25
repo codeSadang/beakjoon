@@ -37,6 +37,9 @@ public class 황병수 {
             }
         }
 
+        int Cnt = 0;
+        int CntA = 0;
+
         for (int i = 0; i < N; i++) {
             for (int j = 0; j < N; j++) {
                 if (!visited[i][j]) {
@@ -44,6 +47,7 @@ public class 황병수 {
 
                     bfs(i,j, color);
                     hashMap.put(color, hashMap.getOrDefault(color, 0) +1);
+                    Cnt += 1;
                 }
 
                 if (!visitedA[i][j]) {
@@ -54,12 +58,12 @@ public class 황병수 {
 
                     bfsA(i,j, color);
                     hashMapA.put(color, hashMapA.getOrDefault(color, 0) +1);
+                    CntA += 1;
                 }
             }
         }
 
-        System.out.println(hashMap);
-        System.out.println(hashMapA);
+        System.out.println(Cnt + " " + CntA);
 
     }
 
@@ -103,17 +107,19 @@ public class 황병수 {
                 int nx = currX + dx[i];
 
                 if (ny >= 0 && nx >= 0 && ny < N && nx < N) {
-                    if ("B".equals(color)) {
-                        if (!visitedA[ny][nx] && map[ny][nx].equals(color)) {
-                            queue.add(new int[]{ny,nx});
-                            visitedA[ny][nx] = true;
-                        }
+
+                    String nowColor;
+                    if (map[ny][nx].equals("G") || map[ny][nx].equals("R")) {
+                        nowColor = "R";
                     } else {
-                        if (!visitedA[ny][nx] && ("R".equals(color) || "G".equals(color))) {
-                            queue.add(new int[]{ny,nx});
-                            visitedA[ny][nx] = true;
-                        }
+                        nowColor = "B";
                     }
+
+                    if (!visitedA[ny][nx] && nowColor.equals(color)) {
+                        queue.add(new int[]{ny, nx});
+                        visitedA[ny][nx] = true;
+                    }
+
                 }
             }
         }

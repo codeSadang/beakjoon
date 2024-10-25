@@ -3,56 +3,44 @@ package 백트래킹.풀어야할문제.카드놓기_5568_실버4;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
-import java.util.HashSet;
-import java.util.Set;
+import java.util.*;
 
 public class 황병수 {
-
-    static int N;
-    static int K;
-    static int[] CL;
-    static boolean[] VISITED;
-    public static Set<String> RL = new HashSet<>();
-
+    static int N,K;
+    static int[] cardList;
+    static boolean[] visited;
+    static Set<String> resultSet = new HashSet<>();
     public static void main(String[] args) throws IOException {
-        solution();
-    }
+        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+        N = Integer.parseInt(br.readLine());
+        K = Integer.parseInt(br.readLine());
 
-    private static int solution() throws IOException {
+        cardList = new int[N];
+        visited = new boolean[N];
 
-        BufferedReader bf = new BufferedReader(new InputStreamReader(System.in));
-        N = Integer.parseInt(bf.readLine());
-        K = Integer.parseInt(bf.readLine());
-
-        int[] cardList = new int[N];
-        boolean[] visited = new boolean[N];
-
-        for (int i = 0; i < N; i++) {
-            cardList[i] = Integer.parseInt(bf.readLine());
+        for (int i = 0; i <N; i++) {
+            cardList[i] = Integer.parseInt(br.readLine());
         }
 
-        backtracking(new StringBuilder(),0);
-
-        return RL.size();
+        getCard(0, "");
+        System.out.println(resultSet.size());
     }
 
-    private static void backtracking(StringBuilder sb, int depth) {
+    static void getCard(int count, String current) {
 
-        if (depth == K) {
-            RL.add(sb.toString());
+        if (count == K) {
+            resultSet.add(current);
             return;
         }
 
         for (int i = 0; i < N; i++) {
-            if (!VISITED[i]) {  // 아직 사용하지 않은 카드라면
-                VISITED[i] = true;  // 카드를 사용한다고 표시
-                sb.append(CL[i]);  // 숫자를 문자열에 추가
-
-                backtracking(sb, depth + 1);
-
-                VISITED[i] = false;
-                sb.delete(sb.length() - String.valueOf(CL[i]).length(), sb.length());
+            if (!visited[i]) {
+                visited[i] = true;
+                getCard(count + 1, current + cardList[i]);
+                visited[i] = false;
             }
         }
+
+
     }
 }

@@ -5,57 +5,55 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.StringTokenizer;
 
 public class 황병수 {
 
     static int N;
-    static int[] numbers;
+    static int[] list;
     static boolean[] visited;
-    static int maxValue = Integer.MIN_VALUE;
-
+    static int result = Integer.MIN_VALUE;
     public static void main(String[] args) throws IOException {
-
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
 
         N = Integer.parseInt(br.readLine());
 
-
-
+        list = new int[N];
         visited = new boolean[N];
-        numbers = new int[N];
 
-        StringTokenizer st = new StringTokenizer(br.readLine());
+        String[] split = br.readLine().split(" ");
         for (int i = 0; i < N; i++) {
-             numbers[i] = Integer.parseInt(st.nextToken());
+            list[i] = Integer.parseInt(split[i]);
         }
 
-        dfs(0, new ArrayList<>());
-
-        System.out.println(maxValue);
+        backtracking(0, new ArrayList<>());
+        System.out.println(result);
     }
 
-    static void dfs(int depth, List<Integer> result) {
-        if (N == depth) {
-            int calcValue = 0;
-            for (int i = 0; i < result.size() - 1; i++) {
-                calcValue += Math.abs(result.get(i) - result.get(i+1));
-            }
-            maxValue = Math.max(calcValue, maxValue);
+    private static void backtracking(int count, List<Integer> selected) {
+
+        if (N == count) {
+            calculator(selected);
             return;
         }
 
         for (int i = 0; i < N; i++) {
-            if (!visited[i]) {
+            if(!visited[i]) {
                 visited[i] = true;
-                result.add(numbers[i]);
-                dfs(depth + 1, result);
-
+                selected.add(list[i]);
+                backtracking(count + 1, selected);
 
                 visited[i] = false;
-                result.remove(result.size() - 1);
+                selected.remove(selected.size() - 1);
             }
         }
+    }
 
+    private static void calculator(List<Integer> selected) {
+        int tempResult = 0;
+        for (int i = 0; i < N-1; i++) {
+            tempResult += Math.abs(selected.get(i) - selected.get(i + 1));
+        }
+
+        result = Math.max(result, tempResult);
     }
 }

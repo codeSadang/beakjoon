@@ -8,42 +8,46 @@ import java.util.StringTokenizer;
 public class 황병수 {
 
     static int N,S;
-    static int count = 0;
-    static int[] numbers;
+    static int[] list;
+    static int result;
     public static void main(String[] args) throws IOException {
 
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
-
         StringTokenizer st = new StringTokenizer(br.readLine());
+
         N = Integer.parseInt(st.nextToken());
         S = Integer.parseInt(st.nextToken());
 
-        numbers = new int[N];
+        list = new int[N];
 
         st = new StringTokenizer(br.readLine());
         for (int i = 0; i < N; i++) {
-            numbers[i] = Integer.parseInt(st.nextToken());
+            list[i] =  Integer.parseInt(st.nextToken());
         }
 
-        bfs(0, 0);
+        backtracking(0, 0);
 
+        // 부분 배열 합이 0인경우 0 제외
         if (S == 0) {
-            count--;
+            result--;
         }
 
-        System.out.println(count);
+        System.out.println(result);
     }
 
-    static void bfs(int index, int currentNumber) {
+    private static void backtracking(int index, int sum) {
 
-        if(index == N) {
-            if (currentNumber == S) {
-                count++;
+        if (index == N) {
+            if (S == sum) {
+                result++;
             }
             return;
         }
 
-        bfs(index + 1, currentNumber);
-        bfs(index + 1, currentNumber + numbers[index]);
+        // 포함하지 않고 넘어가는 경우
+        backtracking(index + 1, sum);
+
+        // 포함하고 넘어가는 경우
+        backtracking(index + 1, sum + list[index]);
     }
 }
