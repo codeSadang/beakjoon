@@ -23,7 +23,6 @@ public class 윤지연 {
      */
 
     static int N;
-    static int[] array;
     static int count;
 
     public static void main(String[] args) throws IOException {
@@ -31,20 +30,14 @@ public class 윤지연 {
         StringTokenizer st = new StringTokenizer(br.readLine());
 
         N = Integer.parseInt(st.nextToken());
-        array = new int[N + 1];
 
-        // 자연수 배열 만들기
-        for (int i = 0; i <= N; i++) {
-            array[i] = i;
-        }
-
-        int s = 0;
-        int e = 0;
+        int s = 1;
+        int e = 1;
 
         while (s <= e && e <= N) {
             int sum = 0;
             for (int i = s; i <= e; i++) {
-                sum += array[i];
+                sum += i;
             }
 
             if (sum == N ) {
