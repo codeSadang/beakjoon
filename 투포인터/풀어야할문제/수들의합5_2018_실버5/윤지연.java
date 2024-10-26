@@ -33,19 +33,18 @@ public class 윤지연 {
 
         int s = 1;
         int e = 1;
+        int sum = 1;
 
-        while (s <= e && e <= N) {
-            int sum = 0;
-            for (int i = s; i <= e; i++) {
-                sum += i;
-            }
-
+        while (e <= N) {
             if (sum == N ) {
                 count++;
-                e++;
+                sum -= s;
+                s++;
             } else if (sum < N) {
                 e++;
+                sum += e;
             } else {
+                sum -= s;
                 s++;
             }
         }
