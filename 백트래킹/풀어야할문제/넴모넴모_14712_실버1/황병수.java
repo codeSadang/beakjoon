@@ -15,8 +15,6 @@ public class 황병수 {
 
     static boolean[][] visited;
     static int N, M;
-    static int[] dx = {-1, 0, 1, 0};
-    static int[] dy = {0, 1, 0, -1};
     static int count;
     public static void main(String[] args) throws IOException {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
