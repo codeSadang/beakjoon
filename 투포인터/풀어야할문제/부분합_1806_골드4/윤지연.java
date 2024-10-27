@@ -41,24 +41,16 @@ public class 윤지연 {
         // 포인터 선언 및 초기화
         int s = 0;
         int e = 0;
-        int sum = array[0];
+        int sum = 0;
 
-        while (s <= e && e < N) {
-            if (S <= sum) {
-                minLength = Math.min(minLength, e-s+1);
-                sum -= array[s];
-                s++;
-            } else {
-                e++;
-                if (e >= N) break;
-                sum += array[e];
+        while (e < N) {
+            sum += array[e++];
+            while (S <= sum) {
+                minLength = Math.min(minLength, e-s);
+                sum -= array[s++];
             }
         }
         // 3. 예외처리
-        if (minLength == Integer.MAX_VALUE) {
-            System.out.println(0);
-        } else {
-            System.out.println(minLength);
-        }
+        System.out.println(minLength == Integer.MAX_VALUE ? 0 : minLength);
     }
 }
