@@ -1,4 +1,4 @@
-package 투포인터.풀어야할문제.수들의합_2018_실버5;
+package 투포인터.풀어야할문제.수들의합5_2018_실버5;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -18,9 +18,10 @@ public class 황병수 {
 
         int left = 1;
         int right = 1;
-        int sum = 0;
+        int sum = 1;
 
-        while (left <= Target) {
+        while (left <= Target / 2 + 1) {
+
 
             if (sum == Target) {
                 result++;
@@ -39,6 +40,7 @@ public class 황병수 {
             }
         }
 
-        System.out.println(result);
+        // 자기 자신 추가
+        System.out.println(result + 1);
     }
 }

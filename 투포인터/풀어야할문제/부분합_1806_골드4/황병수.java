@@ -31,25 +31,23 @@ public class 황병수 {
 
         int left = 0;
         int right = 0;
-        int sum = AList[0];
-        boolean ChcekFlag = false;
+        int sum = 0;
 
-        while (left < N && right < N) {
-            if (sum < S) {
-                right += 1;
-                if (right < N) sum += AList[right];
-            } else {
-                ChcekFlag = true;
-                result = Math.min(result, (right - left + 1));
+        while (true) {
+
+            if (sum >= S) {
+                result = Math.min(result, right - left);
                 sum -= AList[left];
-                left += 1;
+                left++;
+            }
+            else if (right == N || result == 1) break;
+
+            else {
+                sum += AList[right];
+                right++;
             }
         }
 
-        if (ChcekFlag) {
-            System.out.println(result);
-        } else {
-            System.out.println(0);
-        }
+        System.out.println(result == Integer.MAX_VALUE? 0 : result);
     }
 }
