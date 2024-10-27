@@ -1,5 +1,7 @@
 .gradle
-.idea
+.idea/**
+.idea/beakjoon.iml
+.idea/misc.xml
 
 out/
 !**/src/main/**/out/
