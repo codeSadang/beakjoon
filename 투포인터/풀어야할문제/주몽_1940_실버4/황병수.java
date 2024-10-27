@@ -3,6 +3,7 @@ package 투포인터.풀어야할문제.주몽_1940_실버4;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
+import java.util.Arrays;
 import java.util.StringTokenizer;
 
 /**
@@ -35,18 +36,23 @@ public class 황병수 {
             NList[i] = Integer.parseInt(st.nextToken());
         }
 
-        findArmors();
+        Arrays.sort(NList);
+
+        int left = 0;
+        int right = N - 1;
+
+        while (left < right) {
+            int sum = NList[left] + NList[right];
+            if (sum == M) {
+                result++;
+                left++;
+                right--;
+            }
+
+            else if (sum > M) right--;
+            else left++;
+        }
 
         System.out.println(result);
-    }
-
-    private static void findArmors() {
-        for (int startIndex = 0; startIndex < N; startIndex++) {
-            for (int endIndex = startIndex + 1; endIndex < N; endIndex++) {
-                if (NList[startIndex] + NList[endIndex] == M) {
-                    result++;
-                }
-            }
-        }
     }
 }

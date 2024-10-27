@@ -13,7 +13,6 @@ import java.util.StringTokenizer;
 public class 황병수 {
 
     static int N,M;
-    static int result;
     static int[] AList;
     public static void main(String[] args) throws IOException {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
@@ -23,39 +22,27 @@ public class 황병수 {
         M = Integer.parseInt(st.nextToken());
 
         AList = new int[N];
+
         st = new StringTokenizer(br.readLine());
         for (int i = 0; i < N; i++) {
             AList[i] = Integer.parseInt(st.nextToken());
         }
 
+        int sum = 0, left = 0, right = 0, count = 0;
 
-        int left = 0;
-        int right = 0;
-        int sum = 0;
+        while (right < N) {
 
-        while (left < N) {
-            // 현재 부분합이 목표 M과 같을 때
+            sum += AList[right++];
+
+            while (sum > M && left < right) {
+                sum -= AList[left++];
+            }
+
             if (sum == M) {
-                result++;
-                sum -= AList[left];
-                left++;
-            }
-            // 현재 부분합이 M보다 작을 때, right 이동 (범위 체크 필수)
-            else if (sum < M) {
-                if (right < N) {
-                    sum += AList[right];
-                    right++;
-                } else {
-                    break;
-                }
-            }
-            // 현재 부분합이 M보다 클 때, left 이동
-            else {
-                sum -= AList[left];
-                left++;
+                count++;
             }
         }
 
-        System.out.println(result);
+        System.out.println(count);
     }
 }
