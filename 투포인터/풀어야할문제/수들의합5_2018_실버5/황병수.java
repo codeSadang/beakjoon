@@ -18,26 +18,20 @@ public class 황병수 {
 
         int left = 1;
         int right = 1;
-        int sum = 1;
+        int sum = 0;
 
-        while (left <= Target / 2 + 1) {
-
+        while (left < Target) {
+            while (sum < Target) {
+                sum += right;
+                right++;
+            }
 
             if (sum == Target) {
                 result++;
-                sum -= left;
-                left += 1;
             }
 
-            if (sum < Target) {
-                sum += right;
-                right += 1;
-            }
-
-            if (sum > Target) {
-                sum -= left;
-                left += 1;
-            }
+            sum -= left;
+            left++;
         }
 
         // 자기 자신 추가
