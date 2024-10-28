@@ -1,6 +1,5 @@
 package 투포인터.풀어야할문제.부분합_1806_골드4;
 
-
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
@@ -32,15 +31,13 @@ public class 이태균 {
         int sum = 0;
 
         while (right < N) {
-            sum += ARR[right];
+            sum += ARR[right++];
 
             while (sum >= S) {
-                LENGTH = Math.min(LENGTH, right - left + 1);
+                LENGTH = Math.min(LENGTH, right - left);
                 sum -= ARR[left];
                 left++;
             }
-
-            right++;
         }
 
         if (LENGTH == Integer.MAX_VALUE) {
