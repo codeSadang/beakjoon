@@ -43,15 +43,14 @@ public class 윤지연 {
         int sum = 0;
 
         while (e < N) {
-            if (sum < M) {
-                if (e == N) break;
-                sum += arr[e++];
-            } else if (sum == M) {
-                count++;
-                sum -= arr[s++];
-            } else {
+            sum += arr[e];
+            while (sum >= M) {
+                if (sum == M) {
+                    count++;
+                }
                 sum -= arr[s++];
             }
+            e++;
         }
         System.out.println(count);
     }
