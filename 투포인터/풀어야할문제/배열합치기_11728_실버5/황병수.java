@@ -40,44 +40,26 @@ public class 황병수 {
             B[i] = Integer.parseInt(st.nextToken());
         }
 
-        Arrays.sort(A);
-        Arrays.sort(B);
-
-
         int indexA = 0;
         int indexB = 0;
 
         StringBuilder sb = new StringBuilder();
-
-        while (indexA + indexB < (N + M)) {
-
-            if (indexA == N) {
-                sb.append(B[indexB]).append(" ");
-                indexB++;
-                continue;
-            }
-
-            if (indexB == M) {
-                sb.append(A[indexA]).append(" ");
-                indexA++;
-                continue;
-            }
-
-
-            if (A[indexA] > B[indexB]) {
-                sb.append(B[indexB]).append(" ");
-                indexB++;
-            } else if (A[indexA] < B[indexB]) {
-                sb.append(A[indexA]).append(" ");
-                indexA++;
+        while (indexA < N && indexB < M) {
+            if (A[indexA] >= B[indexB]) {
+                sb.append(B[indexB++]).append(" ");
             } else {
-                sb.append(A[indexA]).append(" ");
-                sb.append(B[indexB]).append(" ");
-                indexA++;
-                indexB++;
+                sb.append(A[indexA++]).append(" ");
             }
         }
 
-        System.out.println(sb);
+        while (indexA < N) {
+            sb.append(A[indexA++]).append(" ");
+        }
+
+        while (indexB < M) {
+            sb.append(B[indexB++]).append(" ");
+        }
+
+        System.out.println(sb.toString().trim());
     }
 }
