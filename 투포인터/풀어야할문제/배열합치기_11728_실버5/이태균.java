@@ -12,11 +12,11 @@ public class 이태균 {
     public static int N;
     public static int M;
 
-    public static Long[] ARR_A;
-    public static Long[] ARR_B;
+    public static Integer[] ARR_A;
+    public static Integer[] ARR_B;
 
     public static StringBuilder SB = new StringBuilder();
-    public static List<Long> ARR_RESULT = new ArrayList<>();
+//    public static List<Long> ARR_RESULT = new ArrayList<>();
 
     public static void main(String[] args) throws IOException {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
@@ -25,16 +25,16 @@ public class 이태균 {
         N = Integer.parseInt(st.nextToken());
         M = Integer.parseInt(st.nextToken());
 
-        ARR_A = new Long[N];
+        ARR_A = new Integer[N];
         st = new StringTokenizer(br.readLine());
         for (int i = 0; i < N; i++) {
-            ARR_A[i] = Long.parseLong(st.nextToken());
+            ARR_A[i] = Integer.parseInt(st.nextToken());
         }
 
-        ARR_B = new Long[M];
+        ARR_B = new Integer[M];
         st = new StringTokenizer(br.readLine());
         for (int i = 0; i < M; i++) {
-            ARR_B[i] = Long.parseLong(st.nextToken());
+            ARR_B[i] = Integer.parseInt(st.nextToken());
         }
 
         two_pointer();
@@ -63,16 +63,15 @@ public class 이태균 {
         }
     }
 
-
-    private static void array_sorting() {
-        ARR_RESULT.addAll(List.of(ARR_A));
-        ARR_RESULT.addAll(List.of(ARR_B));
-
-        ARR_RESULT.sort(null);
-
-        for (long i : ARR_RESULT) {
-            SB.append(i).append(" ");
-        }
-    }
+//    private static void array_sorting() {
+//        ARR_RESULT.addAll(List.of(ARR_A));
+//        ARR_RESULT.addAll(List.of(ARR_B));
+//
+//        ARR_RESULT.sort(null);
+//
+//        for (long i : ARR_RESULT) {
+//            SB.append(i).append(" ");
+//        }
+//    }
 
 }
