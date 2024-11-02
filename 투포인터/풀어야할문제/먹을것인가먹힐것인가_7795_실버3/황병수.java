@@ -59,7 +59,6 @@ public class 황병수 {
 
             int count = 0;
             for (int IndexA = 0; IndexA < ASize; IndexA++) {
-
                 int IndexB = 0;
                 while(IndexB < BSize && AList[IndexA] > BList[IndexB]) {
                     count++;

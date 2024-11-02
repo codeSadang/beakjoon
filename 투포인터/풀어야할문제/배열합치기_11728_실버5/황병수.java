@@ -16,53 +16,68 @@ import java.util.*;
  * 첫째줄에 두 배열을 합친 후 정렬한 결과를 출력한다.
  */
 public class 황병수 {
-
-    static List<Long> A = new ArrayList<>();
-    static List<Long> B = new ArrayList<>();
-    static Long N,M;
+    static int[] A;
+    static int[] B;
+    static int N,M;
     public static void main(String[] args) throws IOException {
 
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
         StringTokenizer st = new StringTokenizer(br.readLine());
 
-        N = Long.parseLong(st.nextToken());
-        M = Long.parseLong(st.nextToken());
+        N = Integer.parseInt(st.nextToken());
+        M = Integer.parseInt(st.nextToken());
 
+        A = new int[N];
+        B = new int[M];
 
         st = new StringTokenizer(br.readLine());
         for (int i = 0; i < N; i++) {
-            A.add(Long.parseLong(st.nextToken()));
+            A[i] = Integer.parseInt(st.nextToken());
         }
 
         st = new StringTokenizer(br.readLine());
         for (int i = 0; i < M; i++) {
-            B.add(Long.parseLong(st.nextToken()));
+            B[i] = Integer.parseInt(st.nextToken());
         }
 
-        List<Long> result = new ArrayList<>();
+        Arrays.sort(A);
+        Arrays.sort(B);
 
-        result.addAll(A);
-        result.addAll(B);
 
-//        System.out.println(result);
+        int indexA = 0;
+        int indexB = 0;
 
-        result.sort(null);
         StringBuilder sb = new StringBuilder();
 
-        for (long i : result) {
-            sb.append(i).append(" ");
+        while (indexA + indexB < (N + M)) {
+
+            if (indexA == N) {
+                sb.append(B[indexB]).append(" ");
+                indexB++;
+                continue;
+            }
+
+            if (indexB == M) {
+                sb.append(A[indexA]).append(" ");
+                indexA++;
+                continue;
+            }
+
+
+            if (A[indexA] > B[indexB]) {
+                sb.append(B[indexB]).append(" ");
+                indexB++;
+            } else if (A[indexA] < B[indexB]) {
+                sb.append(A[indexA]).append(" ");
+                indexA++;
+            } else {
+                sb.append(A[indexA]).append(" ");
+                sb.append(B[indexB]).append(" ");
+                indexA++;
+                indexB++;
+            }
         }
 
         System.out.println(sb);
-
-//        result.sort(Collections.reverseOrder());
-//        System.out.println(result);
-//
-//        Collections.sort(result, Collections.reverseOrder());
-//        System.out.println(result);
-//
-//        Collections.sort(result);
-//        System.out.println(result);
-
     }
 }
