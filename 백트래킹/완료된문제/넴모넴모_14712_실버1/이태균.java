@@ -1,4 +1,4 @@
-package 백트래킹.풀어야할문제.넴모넴모_14712_실버1;
+package 백트래킹.완료된문제.넴모넴모_14712_실버1;
 
 import java.io.BufferedReader;
 import java.io.IOException;
