@@ -1,4 +1,4 @@
-package 투포인터.풀어야할문제.먹을것인가먹힐것인가_7795_실버3;
+package 투포인터.완료된문제.먹을것인가먹힐것인가_7795_실버3;
 
 import java.io.BufferedReader;
 import java.io.IOException;

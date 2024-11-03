@@ -1,4 +1,4 @@
-package 투포인터.풀어야할문제.배열합치기_11728_실버5;
+package 투포인터.완료된문제.배열합치기_11728_실버5;
 
 import java.io.BufferedReader;
 import java.io.IOException;

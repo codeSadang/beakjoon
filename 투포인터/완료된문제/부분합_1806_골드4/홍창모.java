@@ -1,4 +1,4 @@
-package 투포인터.풀어야할문제.부분합_1806_골드4;
+package 투포인터.완료된문제.부분합_1806_골드4;
 
 import java.io.BufferedReader;
 import java.io.IOException;
