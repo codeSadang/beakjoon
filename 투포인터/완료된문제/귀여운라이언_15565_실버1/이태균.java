@@ -1,4 +1,4 @@
-package 투포인터.풀어야할문제.귀여운라이언_15565_실버1;
+package 투포인터.완료된문제.귀여운라이언_15565_실버1;
 
 import java.io.BufferedReader;
 import java.io.IOException;

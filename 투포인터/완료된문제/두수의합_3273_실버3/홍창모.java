@@ -1,4 +1,4 @@
-package 투포인터.풀어야할문제.두수의합_3273_실버3;
+package 투포인터.완료된문제.두수의합_3273_실버3;
 
 import java.io.BufferedReader;
 import java.io.IOException;
