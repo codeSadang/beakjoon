@@ -4,7 +4,6 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 import java.util.StringTokenizer;
 
@@ -15,7 +14,7 @@ public class 윤지연 {
      */
 
     static int N;
-    static int result = 0; // wk
+    static int result = 0;
     static boolean[] isPrime;
     static List<Integer> prime = new ArrayList<>();
 
@@ -39,14 +38,15 @@ public class 윤지연 {
         int e = 0;
         int sum = 0;
 
-        while (s < prime.size()) {
-            if (sum < N) {
-                sum += prime.get(e++);
-            } else if (sum > N){
+        while (e < prime.size()) {
+            sum += prime.get(e++);
+
+            while (sum > N && s < e) {
                 sum -= prime.get(s++);
-            } else {
+            }
+
+            if (sum == N) {
                 result++;
-                sum -= prime.get(s++);
             }
         }
     }
@@ -60,7 +60,7 @@ public class 윤지연 {
 
         for (int i = 2; i <= N; i++) {
 
-            if (isPrime[i] == true) {
+            if (isPrime[i]) {
                 continue;
             } else {
                 prime.add(i);
