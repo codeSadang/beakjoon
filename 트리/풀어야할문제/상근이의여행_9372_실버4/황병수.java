@@ -30,13 +30,11 @@ public class 황병수 {
 
     static int T,N,M;
     static boolean[] visited;
-
-    static int[] testCase;
+    static StringBuilder sb = new StringBuilder();
     public static void main(String[] args) throws IOException {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
 
         T = Integer.parseInt(br.readLine());
-        StringBuilder sb = new StringBuilder();
 
         for (int i = 0; i < T; i++) {
             StringTokenizer st = new StringTokenizer(br.readLine());
@@ -57,38 +55,32 @@ public class 황병수 {
                 AList.get(v).add(u);
             }
 
-            bfs(1);
-
-
-            int result = i + 1;
-
-
-            sb.append(result).append(" ");
+            bfs(AList);
         }
 
-        System.out.println(String.valueOf(sb).trim());
+        System.out.println(sb);
     }
 
-    private static int bfs(int index) {
-        Deque<Integer> queue = new Deque<>();
+    static void bfs(List<List<Integer>> tree) {
+        Queue<Integer> queue = new LinkedList<>();
         visited = new boolean[N+1];
-        queue.add(index);
-        visited[index] = true;
+        queue.add(1);
+        visited[1] = true;
 
-        int flightCount = 0;
+        int count = 0;  // 간선 횟수
 
         while (!queue.isEmpty()) {
             int current = queue.poll();
 
-            for (int neighbor : AList.get(current)) {
+            for (int neighbor : tree.get(current)) {
                 if (!visited[neighbor]) {
                     visited[neighbor] = true;
                     queue.add(neighbor);
-                    flightCount++;
+                    count++;
                 }
             }
         }
-        return flightCount;
 
+        sb.append(count).append('\n');
     }
 }
