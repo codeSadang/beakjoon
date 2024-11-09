@@ -31,13 +31,17 @@ public class 황병수 {
         }
 
 
+        // 깊이 우선 탐색
 //        dfs();
+        
+        // 넓이 우선 탐색
         bfs();
 
-        // 부모 노드들을 2번부터 N번까지 출력
+        StringBuilder sb = new StringBuilder();
         for (int i = 2; i <= N; i++) {
-            System.out.println(result[i]);
+            sb.append(result[i]).append("\n");
         }
+        System.out.print(sb);
     }
 
     private static void dfs() {
