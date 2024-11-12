@@ -12,7 +12,6 @@ public class 이태균 {
     public static int[] N_CARD_LIST;
     public static int M;
     public static int[] M_CARD_LIST;
-
     public static int[] RESULT;
 
     public static void main(String[] args) throws IOException {
@@ -36,46 +35,67 @@ public class 이태균 {
         }
 
         for (int i = 0; i < M; i++) {
-            int count = binary_search(M_CARD_LIST[i]);
-            RESULT[i] = count;
+            RESULT[i] = binary_search(M_CARD_LIST[i]);
         }
 
-        System.out.println(Arrays.toString(RESULT));
+        StringBuilder sb = new StringBuilder();
+        for (int res : RESULT) {
+            sb.append(res).append(" ");
+        }
+
+        System.out.println(sb.toString().trim());
     }
 
     private static int binary_search(int target) {
-        int left = 0;
-        int right = N - 1;
+        int left = lowerBound(target);
+        int right = upperBound(target);
 
-        while (left <= right) {
+        if (left == -1 || right == -1) {
+            return 0;
+        }
+
+        return right - left;
+    }
+
+    private static int lowerBound(int target) {
+        int left = 0;
+        int right = N;
+
+        while (left < right) {
             int mid = (left + right) / 2;
 
-            if (N_CARD_LIST[mid] == target) {
-                int count = 1;
-
-                int left_idx = mid - 1;
-                while (left_idx >= 0 && N_CARD_LIST[left_idx] == target) {
-                    count++;
-                    left_idx--;
-                }
-
-                int right_idx = mid + 1;
-                while (right_idx < N && N_CARD_LIST[right_idx] == target) {
-                    count++;
-                    right_idx++;
-                }
-
-                return count;
-            }
-            else if (N_CARD_LIST[mid] < target) {
+            if (N_CARD_LIST[mid] >= target) {
+                right = mid;
+            } else {
                 left = mid + 1;
-            }
-            else {
-                right = mid - 1;
             }
         }
 
-        return 0;
+        if (left < N && N_CARD_LIST[left] == target) {
+            return left;
+        }
+
+        return -1;
     }
 
+    private static int upperBound(int target) {
+        int left = 0;
+        int right = N;
+
+        while (left < right) {
+            int mid = (left + right) / 2;
+
+            if (N_CARD_LIST[mid] > target) {
+                right = mid;
+            } else {
+                left = mid + 1;
+            }
+        }
+
+        if (left > 0 && N_CARD_LIST[left - 1] == target) {
+            return left;
+        }
+
+        return -1;
+    }
 }
