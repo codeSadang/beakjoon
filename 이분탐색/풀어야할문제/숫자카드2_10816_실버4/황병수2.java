@@ -9,7 +9,7 @@ import java.util.StringTokenizer;
 /**
  *
  */
-public class 황병수 {
+public class 황병수2 {
 
     static int N,M;
     static int[] AList, BList;
@@ -36,37 +36,39 @@ public class 황병수 {
 
         StringBuilder sb = new StringBuilder();
         for (int curNum : BList) {
-            int left = 0;
-            int right = N-1;
-            int count = 0;
-
-            while (left <= right) {
-                int mid = (left + right)/2;
-                if (AList[mid] == curNum) {
-                    count++;
-
-                    int Rmid = mid+1;
-                    int Lmid = mid-1;
-
-                    while (Rmid < N && AList[Rmid] == curNum) {
-                        Rmid++;
-                        count++;
-                    }
-
-                    while (Lmid >= 0 && AList[Lmid] == curNum) {
-                        Lmid--;
-                        count++;
-                    }
-                    break;
-
-                } else if (AList[mid] < curNum) {
-                    left = mid + 1;
-                } else {
-                    right = mid - 1;
-                }
-            }
+            int count = upperBound(curNum) - lowerBound(curNum);
             sb.append(count).append(" ");
         }
         System.out.println(String.valueOf(sb).trim());
+    }
+
+    // lowerBound: curNum의 첫 번째 등장 위치
+    private static int lowerBound(int curNum) {
+        int left = 0;
+        int right = N;
+        while (left < right) {
+            int mid = (left + right) / 2;
+            if (AList[mid] >= curNum) {
+                right = mid;
+            } else {
+                left = mid + 1;
+            }
+        }
+        return left;
+    }
+
+    // upperBound: curNum보다 큰 첫 번째 위치
+    private static int upperBound(int curNum) {
+        int left = 0;
+        int right = N;
+        while (left < right) {
+            int mid = (left + right) / 2;
+            if (AList[mid] > curNum) {
+                right = mid;
+            } else {
+                left = mid + 1;
+            }
+        }
+        return left;
     }
 }
