@@ -36,8 +36,7 @@ public class 윤지연 {
         Arrays.sort(cards);
 
         for (int i = 0; i < M; i++) {
-            binarySearch(targets[i]);
-//            System.out.println(targets[i]);
+            upgradeBinarySearch(targets[i]);
         }
         System.out.println(result.toString());
     }
@@ -103,5 +102,36 @@ public class 윤지연 {
         }
 
         result.append(count).append(" ");
+    }
+
+    /*count 대신 index 활용을 고려해보자*/
+    private static void upgradeBinarySearch(int target) {
+        // Lower bound (첫 번째 위치) 찾기
+        int low = 0;
+        int high = N;
+        while (low < high) {
+            int mid = (low + high) / 2;
+            if (cards[mid] >= target) {
+                high = mid;
+            } else {
+                low = mid + 1;
+            }
+        }
+        int first = low;
+
+        // Upper bound (마지막 위치 + 1) 찾기
+        low = 0;
+        high = N;
+        while (low < high) {
+            int mid = (low + high) / 2;
+            if (cards[mid] > target) {
+                high = mid;
+            } else {
+                low = mid + 1;
+            }
+        }
+        int last = low;
+
+        result.append(last - first).append(" ");
     }
 }
