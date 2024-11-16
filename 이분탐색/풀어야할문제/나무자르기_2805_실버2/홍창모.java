@@ -30,34 +30,30 @@ public class 홍창모 {
         Arrays.sort(tree);
 
         int answer = binarySearch();
+
+        System.out.print(answer);
     }
 
     public static int binarySearch() {
         int answer = 0;
 
-        int lt = 0, rt = N-1;
+        int lt = 0, rt = tree[N-1];
 
-        // 최대 높이 나무의 반값
-        int midH = tree[N-1] / 2;
-        int maxH = tree[N-1];
-
-
-        while( lt <= rt && midH < maxH ) {
+        while( lt <= rt  ) {
             int cut = 0;
             int mid = lt + (rt - lt) /2;
 
             // mid 값보다 작은 높이는 탐색이 필요없음.
-            if( tree[mid] - midH < 0 ) {
-                lt = mid + 1;
-            } else if( tree[mid] - midH > 0 ) {
-                for( int i = mid; i < rt; i++ ) {
-                    cut += tree[i] - midH;
-                }
-                midH++;
+            for( int i = 0; i < N; i++ ) {
+                cut += tree[i] - mid;
             }
 
-
-            if( cut >= M ) answer = midH;
+            if( cut >= M ) {
+                lt = mid + 1;
+                answer = mid;
+            } else {
+                rt = mid - 1;
+            }
 
         }
 
