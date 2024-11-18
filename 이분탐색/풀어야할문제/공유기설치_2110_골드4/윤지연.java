@@ -5,7 +5,7 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 import java.util.Arrays;
 import java.util.StringTokenizer;
-/*
+/*claude
 가장 중요한 점은 "우리가 이진 탐색으로 찾아야 하는 것"이 무엇인지 파악하는 것입니다.
 
 이 문제에서는 "공유기 간의 최소 거리"를 이진 탐색으로 찾아야 합니다.
@@ -49,7 +49,7 @@ public class 윤지연 {
         int result = 0; // 결과값
 
         while (s <= e) {
-            int mid = s + (e - s) / 2;
+            int mid = s + (e - s) / 2; // (s + e) / 2  와 같은 결과를 나타내지만 안전한 방식(오버플로우 방지)
 
             if (canInstall(mid)) {
                 result = mid;
