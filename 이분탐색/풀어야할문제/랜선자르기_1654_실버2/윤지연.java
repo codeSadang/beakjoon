@@ -25,7 +25,6 @@ public class 윤지연 {
             max = Math.max(max, cables[i]);
         }
 
-        Arrays.sort(cables);
         binarySearch();
     }
 
