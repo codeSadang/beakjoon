@@ -3,16 +3,27 @@ package 이분탐색.풀어야할문제.개똥벌레_3020_골드5;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.List;
+import java.util.Arrays;
 import java.util.StringTokenizer;
 
+/**
+ * 개똥벌레
+ *
+ * 석순과 종유석가득찬 동굴에 들어감
+ * 길이 N
+ * 높이 H
+ * N은 짝수? 첫 번째 장애물은 항상 석순
+ * 그 다음에는 종유석, 석순이 번갈아가면서 등장
+ *
+ * 길이가 14미터 높이가 5미터
+ *
+ */
 public class 황병수 {
-    static int N, H;
-    static List<Integer> downList = new ArrayList<>();
-    static List<Integer> upList = new ArrayList<>();
 
+    static int N,H;
+    static int[] top,bottom;
+
+    static int minResult = Integer.MAX_VALUE;
     public static void main(String[] args) throws IOException {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
         StringTokenizer st = new StringTokenizer(br.readLine());
@@ -20,32 +31,46 @@ public class 황병수 {
         N = Integer.parseInt(st.nextToken());
         H = Integer.parseInt(st.nextToken());
 
+        BinarySearchMethod(br);
+
+
+    }
+
+    private static void BinarySearchMethod(BufferedReader br) throws IOException {
+
+        int[] top = new int[N / 2]; // 석순
+        int[] bottom = new int[N / 2]; // 종유석
+
         // 입력 처리
         for (int i = 0; i < N; i++) {
             int height = Integer.parseInt(br.readLine());
             if (i % 2 == 0) {
-                downList.add(height);
+                top[i / 2] = height; // 석순
             } else {
-                upList.add(height);
+                bottom[i / 2] = height; // 종유석
             }
         }
 
-        // 정렬
-        Collections.sort(downList);
-        Collections.sort(upList);
+        Arrays.sort(top);
+        Arrays.sort(bottom);
 
-        // 최소값과 해당 경우의 수 초기화
         int minObstacles = Integer.MAX_VALUE;
         int count = 0;
 
-        // 높이 1부터 H까지 확인
+        // 각 높이에 대해 장애물 계산
         for (int h = 1; h <= H; h++) {
-            int obstacles = countObstacles(h);
+            // 석순: h 이하의 장애물 수
+            int bottomCount = top.length - lowerBound(top, h);
+            // 종유석: H - h + 1 이상의 장애물 수
+            int topCount = bottom.length - lowerBound(bottom, H - h + 1);
 
-            if (obstacles < minObstacles) {
-                minObstacles = obstacles;
+            int totalObstacles = bottomCount + topCount;
+
+            // 최소값과 카운트 계산
+            if (totalObstacles < minObstacles) {
+                minObstacles = totalObstacles;
                 count = 1;
-            } else if (obstacles == minObstacles) {
+            } else if (totalObstacles == minObstacles) {
                 count++;
             }
         }
@@ -54,25 +79,18 @@ public class 황병수 {
         System.out.println(minObstacles + " " + count);
     }
 
-    private static int countObstacles(int h) {
-        // 석순에서 h 이상에 해당하는 장애물 개수
-        int down = downList.size() - binarySearch(downList, h - 1);
-        // 종유석에서 H - h 이상에 해당하는 장애물 개수
-        int up = upList.size() - binarySearch(upList, H - h);
-
-        return down + up;
-    }
-
-    private static int binarySearch(List<Integer> list, int target) {
-        int left = 0, right = list.size() - 1;
-        while (left <= right) {
+    // lowerBound 구현
+    private static int lowerBound(int[] arr, int target) {
+        int left = 0, right = arr.length;
+        while (left < right) {
             int mid = (left + right) / 2;
-            if (list.get(mid) <= target) {
-                left = mid + 1;
+            if (arr[mid] >= target) {
+                right = mid;
             } else {
-                right = mid - 1;
+                left = mid + 1;
             }
         }
-        return left; // target 이상의 첫 번째 위치 반환
+        return left;
     }
+
 }
