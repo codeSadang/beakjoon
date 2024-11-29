@@ -37,8 +37,8 @@ public class 황병수 {
 
         Arrays.sort(AList);
 
-        long left = 1;               // 최소 길이를 1로 설정
-        long right = AList[K - 1];    // 가장 긴 랜선의 길이
+        long left = 1;
+        long right = AList[K - 1];    
         long mid = 0;
 
         while (left <= right) {
