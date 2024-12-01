@@ -39,16 +39,12 @@ public class 윤지연 {
 
         for (int j = 0; j < M; j++) {
             String problemValue = br.readLine();
-            boolean checkString = problemValue.charAt(0) >= 65;
-            if (checkString) {
-                // 포켓몬 번호 출력
-                System.out.println(pokemonName.get(problemValue));
-            } else {
-                // 포켓몬 이름 출력
+            if (Character.isDigit(problemValue.charAt(0))) {
                 Integer number = Integer.parseInt(problemValue);
                 System.out.println(pokemonNumber.get(number));
+            } else {
+                System.out.println(pokemonName.get(problemValue));
             }
         }
     }
-
 }
