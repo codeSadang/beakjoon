@@ -10,7 +10,6 @@ import java.util.StringTokenizer;
 public class 윤지연 {
     static int N, M;
     static Map<Integer, Integer> comparison = new HashMap<>();
-    static int[] control;
 
     public static void main(String[] args) throws IOException {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
@@ -23,20 +22,13 @@ public class 윤지연 {
         }
 
         M = Integer.parseInt(br.readLine());
-        control = new int[M];
         st = new StringTokenizer(br.readLine());
+        StringBuilder answer = new StringBuilder();
         for (int j = 0; j < M; j++) {
-            control[j] = Integer.parseInt(st.nextToken());
+            int checkValue = Integer.parseInt(st.nextToken());
+            answer.append(comparison.getOrDefault(checkValue, 0)).append(" ");
         }
 
-        StringBuilder answer = new StringBuilder();
-        for (int num : control) {
-            if (comparison.containsKey(num)) {
-                answer.append(comparison.get(num)).append(" ");
-            } else {
-                answer.append("0 ");
-            }
-        }
         System.out.println(answer.toString().trim());
     }
 }
