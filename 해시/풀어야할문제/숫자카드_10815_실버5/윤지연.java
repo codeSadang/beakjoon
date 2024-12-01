@@ -1,4 +1,4 @@
-package 해시.풀어야할문제.숫자카드_10815.실버5;
+package 해시.풀어야할문제.숫자카드_10815_실버5;
 
 import java.io.BufferedReader;
 import java.io.IOException;
