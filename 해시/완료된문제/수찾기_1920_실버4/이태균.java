@@ -1,44 +1,48 @@
-package 해시.풀어야할문제.숫자카드_10815_실버5;
+package 해시.완료된문제.수찾기_1920_실버4;
 
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
-import java.util.HashMap;
-import java.util.Map;
+import java.util.HashSet;
+import java.util.Set;
 import java.util.StringTokenizer;
 
 public class 이태균 {
 
     public static int N;
-    public static Map<Integer, Integer> N_MAP;
+    public static Set<Integer> N_SET;
     public static int M;
+    public static int[] M_ARR;
 
-    public static StringBuilder SB = new StringBuilder();
+    public static int[] RESULT;
 
     public static void main(String[] args) throws IOException {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
 
         N = Integer.parseInt(br.readLine());
-        N_MAP = new HashMap<>(N);
+        N_SET = new HashSet<>(N);
         StringTokenizer st = new StringTokenizer(br.readLine());
         for (int i = 0; i < N; i++) {
-            int card = Integer.parseInt(st.nextToken());
-            N_MAP.put(card, 1);
+            N_SET.add(Integer.parseInt(st.nextToken()));
         }
 
         M = Integer.parseInt(br.readLine());
+        M_ARR = new int[M];
+        RESULT = new int[M];
         st = new StringTokenizer(br.readLine());
         for (int i = 0; i < M; i++) {
-            int count = Integer.parseInt(st.nextToken());
+            M_ARR[i] = Integer.parseInt(st.nextToken());
 
-            if (N_MAP.containsKey(count)) {
-                SB.append(1).append(" ");
+            if (N_SET.contains(M_ARR[i])) {
+                RESULT[i] = 1;
             } else {
-                SB.append(0).append(" ");
+                RESULT[i] = 0;
             }
         }
 
-        System.out.println(SB.toString().trim());
+        for (int i : RESULT) {
+            System.out.println(i);
+        }
     }
 
 }

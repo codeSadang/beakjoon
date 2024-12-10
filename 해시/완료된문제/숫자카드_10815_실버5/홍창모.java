@@ -1,9 +1,8 @@
-package 해시.풀어야할문제.숫자카드_10815_실버5;
+package 해시.완료된문제.숫자카드_10815_실버5;
 
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
-import java.util.HashMap;
 import java.util.HashSet;
 import java.util.StringTokenizer;
 
