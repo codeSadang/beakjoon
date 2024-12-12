@@ -1,4 +1,4 @@
-package 해시.풀어야할문제.나는야포켓몬마스터이다솜_1620_실버4;
+package 해시.완료된문제.나는야포켓몬마스터이다솜_1620_실버4;
 
 import java.io.BufferedReader;
 import java.io.IOException;

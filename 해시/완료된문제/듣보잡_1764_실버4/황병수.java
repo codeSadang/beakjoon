@@ -1,4 +1,4 @@
-package 해시.풀어야할문제.듣보잡_1764_실버4;
+package 해시.완료된문제.듣보잡_1764_실버4;
 
 import java.io.BufferedReader;
 import java.io.IOException;
