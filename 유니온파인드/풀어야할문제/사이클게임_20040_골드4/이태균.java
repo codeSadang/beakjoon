@@ -31,7 +31,7 @@ public class 이태균 {
             int node2 = Integer.parseInt(st.nextToken());
             if (find(node1) == find(node2)) {
                 result = i + 1;
-                return;
+                break;
             } else {
                 union(node1, node2);
             }
