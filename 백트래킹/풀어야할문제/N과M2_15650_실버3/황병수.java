@@ -14,14 +14,13 @@ public class 황병수 {
     public static void main(String[] args) throws IOException {
 
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
-
-        // 초기화
         StringTokenizer st = new StringTokenizer(br.readLine());
+
         N = Integer.parseInt(st.nextToken());
         M = Integer.parseInt(st.nextToken());
+
         visited = new boolean[N];
         arr = new int[M];
-
 
         dfs(0);
     }
