@@ -74,7 +74,6 @@ public class 황병수 {
                 count++;
             }
         }
-
         // 결과 출력
         System.out.println(minObstacles + " " + count);
     }
