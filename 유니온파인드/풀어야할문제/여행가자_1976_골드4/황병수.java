@@ -37,7 +37,7 @@ public class 황병수 {
 
         for (int i = 0; i < N; i++) {
             st = new StringTokenizer(br.readLine());
-            for (int j = 0; j < M; j++) {
+            for (int j = 0; j < N; j++) {
                 int checkOne = Integer.parseInt(st.nextToken());
                 if (checkOne == 1) {
                     Union(i,j);
@@ -46,9 +46,9 @@ public class 황병수 {
         }
 
         st = new StringTokenizer(br.readLine());
-        int before = Integer.parseInt(st.nextToken());
+        int before = Integer.parseInt(st.nextToken())-1;
         for (int i = 1; i < M; i++) {
-            int next = Integer.parseInt(st.nextToken());
+            int next = Integer.parseInt(st.nextToken())-1;
             boolean union = isUnion(before, next);
             before = next;
             if (!union) {
@@ -56,7 +56,6 @@ public class 황병수 {
                 return;
             }
         }
-
         System.out.println("YES");
     }
 

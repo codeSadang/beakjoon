@@ -1,4 +1,4 @@
-package 해시.풀어야할문제.무한수열_1351_골드5;
+package 해시.완료된문제.무한수열_1351_골드5;
 
 import java.io.BufferedReader;
 import java.io.IOException;

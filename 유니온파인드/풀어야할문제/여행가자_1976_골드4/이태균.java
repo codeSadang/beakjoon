@@ -1,4 +1,4 @@
-package 유니온파인드.풀어야할문제.여행계획_1976_골드4;
+package 유니온파인드.풀어야할문제.여행가자_1976_골드4;
 
 import java.io.BufferedReader;
 import java.io.IOException;
