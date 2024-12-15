@@ -37,7 +37,7 @@ public class 황병수 {
 
         for (int i = 0; i < N; i++) {
             st = new StringTokenizer(br.readLine());
-            for (int j = 0; j < N; j++) {
+            for (int j = 0; j < M; j++) {
                 int checkOne = Integer.parseInt(st.nextToken());
                 if (checkOne == 1) {
                     Union(i,j);
