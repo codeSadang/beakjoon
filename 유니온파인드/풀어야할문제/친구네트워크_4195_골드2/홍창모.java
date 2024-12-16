@@ -1,4 +1,4 @@
-package 해시.풀어야할문제.친구네트워크_4195_골드2;
+package 유니온파인드.풀어야할문제.친구네트워크_4195_골드2;
 
 import java.io.*;
 import java.util.HashMap;
