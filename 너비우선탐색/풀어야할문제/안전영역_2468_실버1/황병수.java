@@ -18,7 +18,7 @@ public class 황병수 {
         size = Integer.parseInt(br.readLine());
 
         map = new int[size][size];
-        visited = new boolean[size][size];
+
         int maxHeight = 0;
 
         for (int i = 0; i < size; i++) {
@@ -29,8 +29,9 @@ public class 황병수 {
                 maxHeight = Math.max(nowCnt, maxHeight);
             }
         }
-        for (int i = 1; i <= maxHeight; i++) {
 
+        for (int i = 1; i < maxHeight; i++) {
+            visited = new boolean[size][size];
             int count = 0;
             for (int j = 0; j < size; j++) {
                 for (int k = 0; k < size; k++) {
@@ -42,23 +43,19 @@ public class 황병수 {
                 }
             }
             result.add(count);
-
-            visited = new boolean[size][size];
-
         }
 
-        for (Integer i : result) {
-            System.out.println("i = " + i);
+        // 결과 출력
+        if (!result.isEmpty()) {
+            System.out.println(Collections.max(result)); // 가장 큰 안전 영역 개수 출력
         }
-        System.out.println(Collections.max(result));
     }
 
-    static int bfs(int y, int x, int height) {
+    static void bfs(int y, int x, int height) {
         ArrayDeque<int[]> queue = new ArrayDeque<>();
 
         queue.add(new int[]{y,x});
         visited[y][x] = true;
-        int maxCount = 1;
 
         while (!queue.isEmpty()) {
             int[] curr = queue.poll();
@@ -77,8 +74,5 @@ public class 황병수 {
                 }
             }
         }
-
-
-        return maxCount;
     }
 }
