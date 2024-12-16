@@ -18,31 +18,33 @@ public class 이태균 {
         M = Integer.parseInt(br.readLine());
 
         parent = new int[N + 1];
-        for (int i = 0; i <= N; i++) {
+        for (int i = 1; i <= N; i++) {
             parent[i] = i;
         }
 
         StringTokenizer st;
-        for (int node1 = 1; node1 <= N; node1++) {
+        for (int i = 1; i <= N; i++) {
             st = new StringTokenizer(br.readLine());
-            for (int j = 1; j <= M; j++) {
-                int node2 = Integer.parseInt(st.nextToken());
-                if (node2 == 1) {
-                    union(node1, node2);
+            for (int j = 1; j <= N; j++) {
+                int command = Integer.parseInt(st.nextToken());
+                if (command == 1) {
+                    union(i, j);
                 }
             }
         }
 
         st = new StringTokenizer(br.readLine());
-        int national1 = Integer.parseInt(st.nextToken());
-        int national2 = Integer.parseInt(st.nextToken());
-        int national3 = Integer.parseInt(st.nextToken());
 
-        if (find(national1) == find(national2) && find(national2) == find(national3)) {
-            System.out.println("YES");
-        } else {
-            System.out.println("NO");
+        int national = find(Integer.parseInt(st.nextToken()));
+        for (int i = 1; i < M; i++) {
+            int national2 = Integer.parseInt(st.nextToken());
+            if (national != find(national2)) {
+                System.out.println("NO");
+                return;
+            }
         }
+
+        System.out.println("YES");
     }
 
     private static int find(int node) {
