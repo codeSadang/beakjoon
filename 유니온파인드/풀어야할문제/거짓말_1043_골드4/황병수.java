@@ -1,4 +1,4 @@
-package 유니온파인드.풀어야할문제.거짓말_1043_거짓말;
+package 유니온파인드.풀어야할문제.거짓말_1043_골드4;
 
 import java.io.BufferedReader;
 import java.io.IOException;
