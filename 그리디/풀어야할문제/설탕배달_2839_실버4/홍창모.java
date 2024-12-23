@@ -6,12 +6,10 @@ import java.io.InputStreamReader;
 
 public class 홍창모 {
 
-    static int N;
-
     public static void main(String[] args) throws IOException {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
 
-        N = Integer.parseInt(br.readLine());
+        int N = Integer.parseInt(br.readLine());
 
         int answer = 0;
 
