@@ -4,6 +4,7 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.util.Arrays;
+import java.util.Comparator;
 import java.util.StringTokenizer;
 
 /**
@@ -12,9 +13,9 @@ import java.util.StringTokenizer;
 public class 황병수 {
 
     static int N;
-    static int LastTime;
+    static int LastTime = 0;
     static int[][] ListA;
-    static Boolean[] visited;
+
     public static void main(String[] args) throws IOException {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
 
@@ -30,7 +31,13 @@ public class 황병수 {
             ListA[i][1] = endTime;
         }
 
-        Arrays.sort(ListA, (a, b) -> Integer.compare(a[1], b[1]));
+        Arrays.sort(ListA, (a, b) -> {
+            if (a[1] != b[1]) {
+                return Integer.compare(a[1], b[1]); // 종료 시간 기준
+            } else {
+                return Integer.compare(a[0], b[0]); // 시작 시간 기준
+            }
+        });
 
         int count = 0;
 
