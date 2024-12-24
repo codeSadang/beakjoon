@@ -7,7 +7,7 @@ import java.util.Arrays;
 import java.util.StringTokenizer;
 
 public class 윤지연 {
-
+    /*정렬이 핵심 - 끝나는 시간 기준 정렬 + 시작 시간도 고려 해야 한다.*/
     static Meeting[] meetings;
     public static void main(String[] args) throws IOException {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
@@ -20,7 +20,13 @@ public class 윤지연 {
             int end = Integer.parseInt(st.nextToken());
             meetings[i] = new Meeting(start, end);
         }
-        Arrays.sort(meetings, (a, b) -> a.end - b.end);
+
+        Arrays.sort(meetings, (m1, m2) -> {
+            if (m1.end == m2.end) {
+                return m1.start - m2.start;
+            }
+            return m1.end - m2.end;
+        });
 
         int count = 1;
         int lastEndTime = meetings[0].end;
