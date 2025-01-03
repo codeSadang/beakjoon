@@ -1,4 +1,4 @@
-package class1.basic.풀어야할문제.APlusB_1000_새싹;
+package class1.basic.풀어야할문제.APlusB_1000_브론즈5;
 
 import java.io.BufferedReader;
 import java.io.IOException;
