@@ -1,4 +1,4 @@
-package class1.basic.풀어야할문제.HelloWorld_2557_브론즈5;
+package class1.풀어야할문제.HelloWorld_2557_브론즈5;
 
 public class 이태균 {
 

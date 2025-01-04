@@ -1,4 +1,4 @@
-package class1.basic.풀어야할문제.검증수_2475_브론즈5;
+package class1.풀어야할문제.APlusB_1000_브론즈5;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -11,12 +11,10 @@ public class 이태균 {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
         StringTokenizer st = new StringTokenizer(br.readLine());
 
-        int sum = 0;
-        for (int i = 0; i < 5; i ++) {
-            sum += (int) Math.pow(Integer.parseInt(st.nextToken()), 2);
-        }
+        int A = Integer.parseInt(st.nextToken());
+        int B = Integer.parseInt(st.nextToken());
 
-        System.out.println(sum % 10);
+        System.out.println(A + B);
     }
 
 }
