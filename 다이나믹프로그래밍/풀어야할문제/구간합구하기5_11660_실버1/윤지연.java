@@ -6,7 +6,6 @@ import java.io.InputStreamReader;
 import java.util.StringTokenizer;
 
 public class 윤지연 {
-    private static int[][] arr;
     private static int[][] dp;
 
     public static void main(String[] args) throws IOException {
@@ -14,7 +13,7 @@ public class 윤지연 {
         StringTokenizer st = new StringTokenizer(br.readLine());
         int N = Integer.parseInt(st.nextToken());
         int M = Integer.parseInt(st.nextToken());
-        arr = new int[N+1][N+1];
+        int[][] arr = new int[N + 1][N + 1];
         dp = new int[N+1][N+1];
         // 1. 원본 배열 입력
         for (int i = 1; i <= N; i++) {
@@ -42,7 +41,7 @@ public class 윤지연 {
     }
 
     private static void intervalSum(int startRow, int startCol, int endRow, int endCol) {
-        int sum = 0;
+        int sum;
         sum = dp[endRow][endCol] - dp[startRow-1][endCol] - dp[endRow][startCol-1] + dp[startRow-1][startCol-1];
         System.out.println(sum);
     }
