@@ -1,4 +1,4 @@
-package 다이나믹프로그래밍.풀어야할문제.피보나치_2747_브론즈2;
+package 다이나믹프로그래밍.풀어야할문제.피보나치수_2747_브론즈2;
 
 import java.io.BufferedReader;
 import java.io.IOException;
