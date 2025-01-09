@@ -11,11 +11,11 @@ public class 이태균 {
         StringBuilder sb = new StringBuilder();
         int n = Integer.parseInt(br.readLine());
 
-        for(int i = 1; i <= n; i++){
-            for(int j = 1; j <= n - i; j++){
+        for (int i = 1; i <= n; i++) {
+            for (int j = 1; j <= n - i; j++) {
                 sb.append(" ");
             }
-            for(int k = 0; k < i; k++) {
+            for (int k = 0; k < i; k++) {
                 sb.append("*");
             }
             sb.append("\n");
