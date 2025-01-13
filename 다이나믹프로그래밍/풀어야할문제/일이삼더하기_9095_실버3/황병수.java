@@ -9,15 +9,29 @@ import java.io.InputStreamReader;
  * 합을 나타낼 때에는 수를 1개이상 사용해야 함
  */
 public class 황병수 {
-
-    static int[] ListA = new int[12];
     public static void main(String[] args) throws IOException {
 
 
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+        StringBuilder sb = new StringBuilder();
         int N = Integer.parseInt(br.readLine());
 
-        int maxCnt = 0;
+        for (int i = 0; i < N; i++) {
+            int testCase = Integer.parseInt(br.readLine());
 
+            int[] dp = new int[testCase + 1];
+
+            dp[0] = 1;
+
+            for (int j = 1; j <= testCase; j++) {
+                if (j-1 >= 0) dp[j] += dp[j-1];
+                if (j-2 >= 0) dp[j] += dp[j-2];
+                if (j-3 >= 0) dp[j] += dp[j-3];
+            }
+
+            sb.append(dp[testCase]).append('\n');
+        }
+
+        System.out.println(sb);
     }
 }

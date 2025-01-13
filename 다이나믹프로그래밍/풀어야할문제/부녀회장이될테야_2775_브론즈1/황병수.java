@@ -45,15 +45,9 @@ public class 황병수 {
 
     }
     public static void calcMap(int k, int n) {
-
         for (int i = 1; i <= k; i++) {
             for (int j = 1; j <= n; j++) {
-
-                if (j > 1) {
-                    map[i][j] += map[i-1][j] + map[i][j-1];
-                } else {
-                    map[i][j] += map[i-1][j];
-                }
+                map[i][j] += map[i-1][j] + map[i][j-1];
             }
         }
     }
