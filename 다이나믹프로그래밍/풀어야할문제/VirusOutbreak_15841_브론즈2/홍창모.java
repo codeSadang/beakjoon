@@ -3,7 +3,6 @@ package 다이나믹프로그래밍.풀어야할문제.VirusOutbreak_15841_브�
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
-import java.math.BigDecimal;
 import java.math.BigInteger;
 
 public class 홍창모 {
