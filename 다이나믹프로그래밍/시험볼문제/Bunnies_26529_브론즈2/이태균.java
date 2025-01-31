@@ -1,4 +1,4 @@
-package 다이나믹프로그래밍.시험볼문제.Bunnies_26259_브론즈2;
+package 다이나믹프로그래밍.시험볼문제.Bunnies_26529_브론즈2;
 
 import java.io.BufferedReader;
 import java.io.IOException;
