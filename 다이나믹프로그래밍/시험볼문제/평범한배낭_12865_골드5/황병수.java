@@ -15,7 +15,7 @@ public class 황병수 {
 
         bp = new int[maxWeight+1];
 
-fff        for (int i = 0; i < testCase; i++) {
+        for (int i = 0; i < testCase; i++) {
             st = new StringTokenizer(br.readLine());
 
             int weight = Integer.parseInt(st.nextToken());
