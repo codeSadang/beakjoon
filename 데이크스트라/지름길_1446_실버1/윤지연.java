@@ -58,14 +58,14 @@ public class 윤지연 {
             }
         }
 
-        dijkstra(0);
+        dijkstra();
         System.out.println(distance[D]);
     }
 
-    static void dijkstra(int start) {
+    static void dijkstra() {
         PriorityQueue<Node> pq = new PriorityQueue<>();
-        distance[start] = 0;
-        pq.add(new Node(start, 0));
+        distance[0] = 0;
+        pq.add(new Node(0, 0));
 
         while (!pq.isEmpty()) {
             Node current = pq.poll();
