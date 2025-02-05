@@ -29,6 +29,10 @@ public class 황병수2 {
         N = Integer.parseInt(st.nextToken());
         D = Integer.parseInt(st.nextToken());
 
+        dist = new int[D + 1];
+        Arrays.fill(dist, Integer.MAX_VALUE);
+        dist[0] = 0;
+
         graph = new ArrayList[D + 1];
         for (int i = 0; i <= D; i++) graph[i] = new ArrayList<>();
 
@@ -56,9 +60,6 @@ public class 황병수2 {
 
     public static int dijkstra() {
         PriorityQueue<Node> pq = new PriorityQueue<>();
-        dist = new int[D + 1];
-        Arrays.fill(dist, Integer.MAX_VALUE);
-        dist[0] = 0;
         pq.add(new Node(0, 0));
 
         while (!pq.isEmpty()) {
