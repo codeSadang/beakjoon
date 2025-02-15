@@ -1,4 +1,4 @@
-package 데이크스트라.특정거리의도시찾기_18352_실버2;
+package 데이크스트라.풀어야할문제.특정거리의도시찾기_18352_실버2;
 
 import java.io.BufferedReader;
 import java.io.IOException;
