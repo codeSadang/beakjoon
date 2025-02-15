@@ -1,6 +1,4 @@
-package 데이크스트라.풀어야할문제.최소비용구하기_1916_실버3;
-
-import 데이크스트라.풀어야할문제.지름길_1446_실버1.황병수2;
+package 데이크스트라.풀어야할문제.최소비용구하기_1916_골드5;
 
 import java.io.BufferedReader;
 import java.io.IOException;
