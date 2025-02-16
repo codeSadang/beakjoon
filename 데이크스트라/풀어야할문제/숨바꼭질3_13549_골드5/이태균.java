@@ -3,8 +3,8 @@ package 데이크스트라.풀어야할문제.숨바꼭질3_13549_골드5;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
-import java.util.LinkedList;
-import java.util.Queue;
+import java.util.ArrayDeque;
+import java.util.Deque;
 import java.util.StringTokenizer;
 
 public class 이태균 {
@@ -26,12 +26,11 @@ public class 이태균 {
     }
 
     public static int bfs(int start, int end) {
-        Queue<Node> queue = new LinkedList<>();
-        queue.offer(new Node(start, 0));
-        VISITED[start] = true;
+        Deque<Node> deque = new ArrayDeque<>();
+        deque.offer(new Node(start, 0));
 
-        while (!queue.isEmpty()) {
-            Node now = queue.poll();
+        while (!deque.isEmpty()) {
+            Node now = deque.poll();
             int nowPos = now.pos;
             int nowTime = now.time;
 
@@ -39,17 +38,19 @@ public class 이태균 {
                 return nowTime;
             }
 
-            if (nowPos * 2 <= 100001 && !VISITED[nowPos * 2]) {
-                VISITED[nowPos * 2] = true;
-                queue.offer(new Node(nowPos * 2, nowTime));
+            if (VISITED[nowPos]) {
+                continue;
+            }
+            VISITED[nowPos] = true;
+
+            if (nowPos * 2 <= 100000 && !VISITED[nowPos * 2]) {
+                deque.offerFirst(new Node(nowPos * 2, nowTime));
             }
             if (nowPos - 1 >= 0 && !VISITED[nowPos - 1]) {
-                VISITED[nowPos - 1] = true;
-                queue.offer(new Node(nowPos - 1, nowTime + 1));
+                deque.offerLast(new Node(nowPos - 1, nowTime + 1));
             }
-            if (nowPos + 1 <= 100001 && !VISITED[nowPos + 1]) {
-                VISITED[nowPos + 1] = true;
-                queue.offer(new Node(nowPos + 1, nowTime + 1));
+            if (nowPos + 1 <= 100000 && !VISITED[nowPos + 1]) {
+                deque.offerLast(new Node(nowPos + 1, nowTime + 1));
             }
         }
 
