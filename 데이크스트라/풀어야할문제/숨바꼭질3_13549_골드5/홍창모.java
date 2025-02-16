@@ -35,7 +35,8 @@ public class 홍창모 {
             graph[i] = new ArrayList<>();
         }
 
-        System.out.println(dijkstra(N, K));
+        //System.out.println(dijkstra(N, K));
+        System.out.print(bfs(N, K));
     }
 
     private static int dijkstra(int N, int K) {
@@ -72,6 +73,38 @@ public class 홍창모 {
                 graph[pos - 1].add(new Node(pos, depth + 1));
             }
 
+        }
+
+        return -1;
+    }
+
+    public static int bfs(int start, int end) {
+        Deque<Node> deque = new ArrayDeque<>();
+        deque.offer(new Node(start, 0));
+
+        while (!deque.isEmpty()) {
+            Node now = deque.poll();
+            int pos = now.pos;
+            int depth = now.depth;
+
+            if (pos == end) {
+                return depth;
+            }
+
+            if (visited[pos]) {
+                continue;
+            }
+            visited[pos] = true;
+
+            if (pos * 2 <= 100000 && !visited[pos * 2]) {
+                deque.offerFirst(new Node(pos * 2, depth));
+            }
+            if (pos - 1 >= 0 && !visited[pos - 1]) {
+                deque.offerLast(new Node(pos - 1, depth + 1));
+            }
+            if (pos + 1 <= 100000 && !visited[pos + 1]) {
+                deque.offerLast(new Node(pos + 1, depth + 1));
+            }
         }
 
         return -1;
