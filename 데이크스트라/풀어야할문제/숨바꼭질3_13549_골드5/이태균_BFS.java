@@ -7,7 +7,7 @@ import java.util.ArrayDeque;
 import java.util.Deque;
 import java.util.StringTokenizer;
 
-public class 이태균 {
+public class 이태균_BFS {
 
     public static int N;
     public static int K;
