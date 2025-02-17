@@ -1,4 +1,4 @@
-package 데이크스트라.풀어야할문제.숨박꼭질3_13549_골드5;
+package 데이크스트라.풀어야할문제.숨바꼭질3_13549_골드5;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -49,6 +49,7 @@ public class 황병수 {
         }
         return -1; // 도달 불가능한 경우 (이론상 없음)
     }
+
 
     private static int bfs2() {
         Deque<Node> deque = new ArrayDeque<>();
