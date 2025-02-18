@@ -1,4 +1,4 @@
-package 데이크스트라.풀어야할문제.내려가기_2096_골드5;
+package class4.풀어야할문제.내려가기_2096_골드5;
 
 import java.io.BufferedReader;
 import java.io.IOException;
