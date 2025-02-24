@@ -4,6 +4,7 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 
+/* TOP DOWN 방식 MEMOIZATION 방식으로 풀어보기 */
 public class 홍창모 {
 
     static String str1, str2;
