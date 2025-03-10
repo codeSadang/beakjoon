@@ -13,7 +13,8 @@ public class 이태균 {
     public static int N;
     public static List<List<Node>> NODE_LIST = new ArrayList<>();
     public static boolean[] VISITED;
-    public static int RESULT = 0;
+    public static int maxDistance;
+    public static int farthestNode;
 
     public static void main(String[] args) throws IOException {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
@@ -34,17 +35,23 @@ public class 이태균 {
             NODE_LIST.get(v).add(new Node(u, c));
         }
 
-        for (int i = 1; i <= N; i++) {
-            VISITED = new boolean[N + 1];
-            dfs(i, 0);
-        }
+        // 1단계: 임의의 노드(1번)에서 가장 먼 노드 찾기
+        VISITED = new boolean[N + 1];
+        maxDistance = 0;
+        farthestNode = 1;
+        dfs(1);
 
-        System.out.println(RESULT);
+        // 2단계: 가장 먼 노드에서 다시 가장 먼 노드 찾기
+        VISITED = new boolean[N + 1];
+        maxDistance = 0;
+        dfs(farthestNode);
+
+        System.out.println(maxDistance);
     }
 
-    private static void dfs(int start, int sum) {
+    private static void dfs(int start) {
         Stack<Node> stack = new Stack<>();
-        stack.push(new Node(start, sum));
+        stack.push(new Node(start, 0));
         VISITED[start] = true;
 
         while (!stack.isEmpty()) {
@@ -52,7 +59,11 @@ public class 이태균 {
             int now_end = now.end;
             int now_cost = now.cost;
 
-            RESULT = Math.max(now_cost, RESULT);
+            // 현재 노드가 가장 먼 거리라면 업데이트
+            if (now_cost > maxDistance) {
+                maxDistance = now_cost;
+                farthestNode = now_end;
+            }
 
             for (Node next : NODE_LIST.get(now_end)) {
                 if (!VISITED[next.end]) {
