@@ -1,4 +1,4 @@
-package class4.풀어야할문제.트리의지름_1967_골드4;
+package class4.다시풀어볼문제.트리의지름_1967_골드4;
 
 import java.io.BufferedReader;
 import java.io.IOException;
