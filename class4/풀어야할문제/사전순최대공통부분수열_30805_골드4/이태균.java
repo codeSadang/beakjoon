@@ -33,7 +33,15 @@ public class 이태균 {
 
         List<Integer> result = solution(A, B);
 
-        System.out.println(result);
+        StringBuilder sb = new StringBuilder();
+        sb.append(result.size()).append("\n");
+        if (result.size() > 0) {
+            for (int num : result) {
+                sb.append(num).append(" ");
+            }
+        }
+
+        System.out.println(sb);
     }
 
     private static List<Integer> solution(int[] A, int[] B) {
@@ -49,7 +57,7 @@ public class 이태균 {
 
             for (int i = startA; i < N; i++) {
                 for (int j = startB; j < M; j++) {
-                    if (A[i] == B[j]) {
+                    if (A[i] == B[j] && A[i] > max) {
                         max = A[i];
                         idxA = i;
                         idxB= j;
@@ -68,4 +76,5 @@ public class 이태균 {
 
         return result;
     }
+
 }
