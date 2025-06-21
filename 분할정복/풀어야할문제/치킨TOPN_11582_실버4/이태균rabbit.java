@@ -11,6 +11,12 @@ public class 이태균rabbit {
     public static int[] CHICKEN_LIST;
     public static int K;
 
+    /**
+     * Reads input values, divides the array into K equal segments, applies merge sort to each segment, and prints the partially sorted array.
+     *
+     * @param args command-line arguments (not used)
+     * @throws IOException if an I/O error occurs during input reading
+     */
     public static void main(String[] args) throws IOException {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
 
@@ -34,6 +40,12 @@ public class 이태균rabbit {
         }
     }
 
+    /**
+     * Recursively sorts the subarray of CHICKEN_LIST from the specified start index to end index using the merge sort algorithm.
+     *
+     * @param start the starting index of the subarray to sort (inclusive)
+     * @param end the ending index of the subarray to sort (inclusive)
+     */
     private static void mergeSort(int start, int end) {
         if (start >= end) {
             return;
@@ -48,6 +60,16 @@ public class 이태균rabbit {
         merge(start, mid, end);
     }
 
+    /**
+     * Merges two consecutive sorted subarrays of CHICKEN_LIST into a single sorted segment.
+     *
+     * The first subarray is from index {@code start} to {@code mid}, and the second is from {@code mid + 1} to {@code end}.
+     * After merging, the segment from {@code start} to {@code end} in CHICKEN_LIST is sorted in non-decreasing order.
+     *
+     * @param start the starting index of the first subarray
+     * @param mid the ending index of the first subarray and one less than the starting index of the second subarray
+     * @param end the ending index of the second subarray
+     */
     private static void merge(int start, int mid, int end) {
         int[] temp = new int[end - start + 1];
         int i = start, j = mid + 1, k = 0;
