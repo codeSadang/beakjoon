@@ -11,8 +11,8 @@ public class 이태균rabbit {
     public static int[] CHICKEN_LIST;
     public static int K;
 
-    /**
-     * Reads input values, divides the array into K equal segments, applies merge sort to each segment, and prints the partially sorted array.
+    /****
+     * Reads input values, divides the array into K equal segments, applies merge sort to each segment independently, and prints the resulting partially sorted array.
      *
      * @param args command-line arguments (not used)
      * @throws IOException if an I/O error occurs during input reading
@@ -41,10 +41,10 @@ public class 이태균rabbit {
     }
 
     /**
-     * Recursively sorts the subarray of CHICKEN_LIST from the specified start index to end index using the merge sort algorithm.
+     * Recursively sorts a subarray of CHICKEN_LIST between the specified start and end indices using merge sort.
      *
-     * @param start the starting index of the subarray to sort (inclusive)
-     * @param end the ending index of the subarray to sort (inclusive)
+     * @param start the inclusive starting index of the subarray to sort
+     * @param end the inclusive ending index of the subarray to sort
      */
     private static void mergeSort(int start, int end) {
         if (start >= end) {
@@ -63,11 +63,11 @@ public class 이태균rabbit {
     /**
      * Merges two consecutive sorted subarrays of CHICKEN_LIST into a single sorted segment.
      *
-     * The first subarray is from index {@code start} to {@code mid}, and the second is from {@code mid + 1} to {@code end}.
-     * After merging, the segment from {@code start} to {@code end} in CHICKEN_LIST is sorted in non-decreasing order.
+     * The first subarray spans from {@code start} to {@code mid}, and the second from {@code mid + 1} to {@code end}.
+     * After merging, the elements from {@code start} to {@code end} in CHICKEN_LIST are sorted in non-decreasing order.
      *
      * @param start the starting index of the first subarray
-     * @param mid the ending index of the first subarray and one less than the starting index of the second subarray
+     * @param mid the ending index of the first subarray
      * @param end the ending index of the second subarray
      */
     private static void merge(int start, int mid, int end) {
