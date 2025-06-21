@@ -54,7 +54,7 @@ public class 이태균 {
 
     // 넴모를 놓았을 때 2x2 사각형이 생기는지 체크하는 함수
     public static boolean canPlaceNemo(int row, int col) {
-        // 2x2 사각형을 만들 수 없는 위치인 경우 true를 반환 (즉, 넴모를 놓을 수 있음)
+        // 2x2 사각형을 만들 수 없는 위치인 경우 true를 반환(즉, 넴모를 놓을 수 있음)
         if (row == 0 || col == 0) {
             return true;
         }
