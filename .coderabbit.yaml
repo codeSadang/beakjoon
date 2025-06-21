@@ -1,0 +1,14 @@
+language: "ko-KR" # 코드래빗 기본 언어(한국어)
+
+reviews:
+  profile: "chill" # 리뷰 분위기: chill(편안하게), strict(엄격하게) 등
+  request_changes_workflow: false # 리뷰 후 자동 승인 여부(false: 수동 승인)
+  high_level_summary: true # 리뷰 결과 요약 표시
+  poem: false # 리뷰 결과를 시 형식으로 출력 여부
+  review_status: true # 리뷰 상태 표시 여부
+  auto_review:
+    enabled: true # PR 생성 시 자동 리뷰
+    drafts: false # draft PR도 자동 리뷰할지 여부
+
+chat:
+  auto_reply: true # 챗봇 자동 응답 기능
